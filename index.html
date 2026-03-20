@@ -323,9 +323,8 @@ button{-webkit-tap-highlight-color:transparent}
 .hero-btn,.startfc,.bkchart,.chk,.fcb,.optb,.back,.ql,.lcard,.kcell,.micbtn,.sph-mic{touch-action:manipulation}
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:1rem}
-  .hero-visual{order:-1;min-height:250px}
-  .hero-card{min-height:260px}
-  .hi{padding-left:94px}
+  .hero-visual{display:none}
+  .hi{padding-left:94px;max-width:none}
 }
 @media(max-width:700px){
   .lgrid{grid-template-columns:1fr}
@@ -349,6 +348,15 @@ button{-webkit-tap-highlight-color:transparent}
   .lcard{border-radius:18px}
 }
 
+
+.gp{cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s}
+.gp:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.24);border-color:rgba(255,143,171,.22)}
+.gp-act{margin-top:.8rem;font-size:.72rem;color:var(--red2);font-weight:700;letter-spacing:.04em}
+.ex-filter{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.85rem 1rem;border:1px solid rgba(255,143,171,.18);background:rgba(255,255,255,.03);border-radius:14px;margin-bottom:.85rem}
+.ex-filter strong{color:var(--red2)}
+.ex-clear{padding:.45rem .7rem;border-radius:999px;border:1px solid rgba(255,143,171,.18);background:rgba(255,255,255,.04);color:var(--ink);font-size:.72rem;font-weight:700;cursor:pointer}
+.ex-clear:hover{background:rgba(255,255,255,.08)}
+.vlist-sub{padding:7px 1.1rem;background:rgba(255,255,255,.02);border-bottom:1px solid var(--i15);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--i40)}
 </style>
 
 <link rel="manifest" href="manifest.webmanifest">
@@ -641,12 +649,68 @@ const SURV=[
 {id:'temple',ic:'⛩️',n:'Temples & Culture',d:'じんじゃ — shrines, etiquette, sightseeing',p:[{s:'Where is shrine?',j:'〜じんじゃは どこですか？',r:'~Jinja wa doko desu ka?',e:'Where is ~ shrine?'},{s:'Photos OK?',j:'しゃしんを とっても いいですか？',r:'Shashin o totte mo ii desu ka?',e:'May I take a photo?'},{s:'Admission',j:'にゅうじょうりょうは いくらですか？',r:'Nyūjōryō wa ikura desu ka?',e:'How much is admission?'},{s:'Hours',j:'なんじまで あいていますか？',r:'Nanji made aite imasu ka?',e:'Until what time are you open?'},{s:'Souvenirs',j:'おみやげを さがしています',r:'Omiyage o sagashite imasu',e:"I'm looking for souvenirs"}]}
 ];
 
+
+// ── EXTRA VOCAB & GRAMMAR DRILLS ─────────────────────
+const EXTRA_VOCAB={
+  1:[
+    {j:'アメリカ',r:'Amerika',e:'America'},
+    {j:'イギリス',r:'Igirisu',e:'Britain'},
+    {j:'オーストラリア',r:'Ōsutoraria',e:'Australia'},
+    {j:'かんこく',r:'Kankoku',e:'Korea'},
+    {j:'せんこう',r:'senkō',e:'major'},
+    {j:'りゅうがくせい',r:'ryūgakusei',e:'international student'},
+    {j:'ねんせい',r:'nensei',e:'year student'},
+    {j:'でんわばんごう',r:'denwa bangō',e:'telephone number'}
+  ],
+  2:[
+    {j:'この',r:'kono',e:'this ~'},
+    {j:'その',r:'sono',e:'that ~'},
+    {j:'あの',r:'ano',e:'that ~ over there'},
+    {j:'どの',r:'dono',e:'which ~'},
+    {j:'みず',r:'mizu',e:'water'},
+    {j:'おちゃ',r:'ocha',e:'tea'},
+    {j:'さかな',r:'sakana',e:'fish'},
+    {j:'にく',r:'niku',e:'meat'},
+    {j:'メニュー',r:'menyū',e:'menu'}
+  ],
+  3:[
+    {j:'パン',r:'pan',e:'bread'},
+    {j:'こうちゃ',r:'kōcha',e:'black tea'},
+    {j:'ざっし',r:'zasshi',e:'magazine'},
+    {j:'レポート',r:'repōto',e:'report'},
+    {j:'しゅくだい',r:'shukudai',e:'homework'},
+    {j:'かく',r:'kaku',e:'to write'},
+    {j:'かう',r:'kau',e:'to buy'},
+    {j:'うち',r:'uchi',e:'home'}
+  ]
+};
+
+// Map each exercise to a grammar point card
+LD[1].e[0].gp=0; LD[1].e[1].gp=0; LD[1].e[2].gp=0; LD[1].e[3].gp=1;
+LD[2].e[0].gp=0; LD[2].e[1].gp=1; LD[2].e[2].gp=3; LD[2].e[3].gp=2;
+LD[3].e[0].gp=1; LD[3].e[1].gp=1; LD[3].e[2].gp=0; LD[3].e[3].gp=2;
+
+function activateLessonTab(tab){
+  const te=document.getElementById('ltabs');
+  te.querySelectorAll('.ltab').forEach(x=>x.classList.remove('on'));
+  const btn=te.querySelector(`[data-t="${tab}"]`);
+  if(btn) btn.classList.add('on');
+  const n=parseInt(document.getElementById('lhd-n').textContent.replace(/\D/g,''),10);
+  renderTab(n,tab);
+}
+
+function practiceGrammarPoint(n,idx){
+  S.eFilter[n]=idx;
+  S.eI[n]=0;
+  activateLessonTab('exercises');
+}
+
 // ── STATE ─────────────────────────────────────────────
 const S={
   kType:'h',kLrn:{h:new Set(),k:new Set()},kStr:0,
   kQ:[],kI:0,kFl:false,
   vFl:{},vI:{},
-  eI:{},eScore:{},
+  eI:{},eScore:{},eFilter:{},
   sCat:null,sSel:null,sRec:null,sOn:false,
   spRec:{},spOn:{}
 };
@@ -715,11 +779,12 @@ function renderTab(n,tab){
 // Grammar
 function renderG(n,data,el){
   if(data){
-    data.g.forEach(g=>{
+    data.g.forEach((g,idx)=>{
       const d=document.createElement('div');
       d.className='gp';
       d.style.borderLeftColor=g.c;
-      d.innerHTML=`<div class="gp-n" style="color:${g.c}">${g.n}</div><div class="gp-m">${g.m}</div><div class="gp-exs">${g.ex.map(e=>`<div class="gp-ex">${e}</div>`).join('')}</div>`;
+      d.innerHTML=`<div class="gp-n" style="color:${g.c}">${g.n}</div><div class="gp-m">${g.m}</div><div class="gp-exs">${g.ex.map(e=>`<div class="gp-ex">${e}</div>`).join('')}</div><div class="gp-act">Tap to practise this grammar point →</div>`;
+      d.onclick=()=>practiceGrammarPoint(n,idx);
       el.appendChild(d);
     });
   } else {
@@ -733,7 +798,9 @@ function renderG(n,data,el){
 
 // Vocab
 function renderV(n,data,el){
-  const vocab=data?data.v:(LR[n]?.v||[]);
+  const coreVocab=data?(data.v||[]):(LR[n]?.v||[]);
+  const extraVocab=EXTRA_VOCAB[n]||[];
+  const vocab=[...coreVocab,...extraVocab];
   S.vFl[n]=false;
   const w=vocab[S.vI[n]%vocab.length];
   const fc=document.createElement('div');
@@ -745,11 +812,22 @@ function renderV(n,data,el){
   const list=document.createElement('div');
   list.className='vlist';
   list.innerHTML=`<div class="vlist-hd">VOCABULARY — LESSON ${n}</div>`;
-  vocab.forEach(v=>{
+  coreVocab.forEach(v=>{
     const r=document.createElement('div');r.className='vrow';
     r.innerHTML=`<div><div class="vr-j">${v.j}</div><div class="vr-r">${v.r}</div></div><div class="vr-e">${v.e}</div>`;
     list.appendChild(r);
   });
+  if(extraVocab.length){
+    const sub=document.createElement('div');
+    sub.className='vlist-sub';
+    sub.textContent='Additional study vocabulary';
+    list.appendChild(sub);
+    extraVocab.forEach(v=>{
+      const r=document.createElement('div');r.className='vrow';
+      r.innerHTML=`<div><div class="vr-j">${v.j}</div><div class="vr-r">${v.r}</div></div><div class="vr-e">${v.e}</div>`;
+      list.appendChild(r);
+    });
+  }
   el.appendChild(list);
 }
 function flipVC(n){
@@ -760,7 +838,8 @@ function flipVC(n){
   if(h)h.textContent='';
 }
 function nextVC(n,ok){
-  const data=LD[n];const vocab=data?data.v:(LR[n]?.v||[]);
+  const data=LD[n];
+  const vocab=data?[...(data.v||[]),...(EXTRA_VOCAB[n]||[])]:(LR[n]?.v||[]);
   S.vI[n]=((S.vI[n]||0)+1)%vocab.length;S.vFl[n]=false;
   const w=vocab[S.vI[n]];
   document.getElementById('vfcj'+n).textContent=w.j;
@@ -779,7 +858,16 @@ function renderE(n,data,el){
   const sr=document.createElement('div');sr.className='ex-sr';
   sr.innerHTML=`<div class="est"><div class="est-n" id="ec${n}">${sc.c}</div><div class="est-l">Correct</div></div><div class="est"><div class="est-n" id="et${n}">${sc.t}</div><div class="est-l">Answered</div></div>`;
   el.appendChild(sr);
-  const exs=data?data.e:(LR[n]?.e||[]);
+  const allExs=data?data.e:(LR[n]?.e||[]);
+  const filterIdx=(S.eFilter[n]??null);
+  const exs=(filterIdx!==null && data)?allExs.filter(x=>x.gp===filterIdx):allExs;
+  if(filterIdx!==null && data && data.g[filterIdx]){
+    const f=document.createElement('div');
+    f.className='ex-filter';
+    f.innerHTML=`<div>Practising: <strong>${data.g[filterIdx].n}</strong></div><button class="ex-clear" type="button">Show all</button>`;
+    f.querySelector('button').onclick=()=>{S.eFilter[n]=null;S.eI[n]=0;renderTab(n,'exercises');};
+    el.appendChild(f);
+  }
   if(!exs.length){el.innerHTML+='<div style="padding:1rem;color:var(--i40);font-size:.85rem;">Exercises coming soon!</div>';return;}
   const q=exs[S.eI[n]%exs.length];
   renderQ(n,q,el);
