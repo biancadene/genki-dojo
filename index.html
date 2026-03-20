@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
+  
+  <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Genki Dojo</title>
@@ -314,18 +314,34 @@ pointer-events:none}
 .hidden{display:none!important}
 @media(min-width:640px){.lgrid{grid-template-columns:repeat(3,1fr)}.qlinks{grid-template-columns:1fr 1fr}.ql-s{grid-column:1/-1}}
 @media(min-width:1100px){.hero{padding:5rem 3.5rem 3.5rem}.prog-strip,.legend,.sec-head,.lgrid,.qlinks{padding-left:3.5rem;padding-right:3.5rem}}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-visual{min-height:260px}.hi{padding-left:94px}.app-name{font-size:2rem}}
 @media(max-width:560px){.hero{padding:3.6rem 1.25rem 2.5rem}.hero-grid{gap:1rem}.hi{padding-left:86px}.logo{width:58px;height:58px;font-size:1.6rem}.app-name{font-size:1.78rem}.tagline{font-size:.9rem}.hero-actions{gap:.55rem}.hero-btn{min-width:0;flex:1}}
 @media(max-width:360px){.lgrid{grid-template-columns:1fr}}
 
 html{scroll-behavior:smooth}
 button{-webkit-tap-highlight-color:transparent}
 .hero-btn,.startfc,.bkchart,.chk,.fcb,.optb,.back,.ql,.lcard,.kcell,.micbtn,.sph-mic{touch-action:manipulation}
+
 @media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr;gap:1rem}
-  .hero-visual{display:none}
-  .hi{padding-left:94px;max-width:none}
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:1rem;
+  }
+
+  .hero-visual,
+  .hero-card{
+    display:none !important;
+  }
+
+  .hi{
+    padding-left:94px;
+    max-width:none;
+  }
+
+  .app-name{
+    font-size:2rem;
+  }
 }
+
 @media(max-width:700px){
   .lgrid{grid-template-columns:1fr}
   .hero-actions{flex-direction:column}
@@ -333,6 +349,7 @@ button{-webkit-tap-highlight-color:transparent}
   .prog-strip,.legend,.sec-head,.lgrid,.qlinks,.lcon{padding-left:1.1rem;padding-right:1.1rem}
   .kcon,.sph-con,.scats{padding-left:1rem;padding-right:1rem}
 }
+
 @media(max-width:560px){
   .hero{padding:3.4rem 1rem 2.4rem}
   .hero .orb{display:none}
@@ -340,9 +357,6 @@ button{-webkit-tap-highlight-color:transparent}
   .hi{padding-left:82px}
   .app-name{font-size:1.78rem}
   .tagline{font-size:.92rem;max-width:none}
-  .hero-card{border-radius:22px}
-  .hero-card-ui{min-height:170px}
-  .hero-ui-title{font-size:.98rem}
   .hero-jp{font-size:1.2rem;right:12px;bottom:12px}
   .ql{padding:1rem 1rem}
   .lcard{border-radius:18px}
