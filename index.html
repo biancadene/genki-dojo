@@ -5,7 +5,6 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Genki Dojo</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet"/>
-<script src="https://code.responsivevoice.org/responsivevoice.js?key=FREE"></script>
 <style>
 :root{
   --red:#F6C1CC;--red2:#FF8FAB;--rbg:rgba(255,143,171,.12);--rln:rgba(255,143,171,.24);
@@ -949,7 +948,7 @@ const EXTRA_VOCAB={
   3:[{j:'パン',r:'pan',e:'bread'},{j:'こうちゃ',r:'kōcha',e:'black tea'},{j:'ざっし',r:'zasshi',e:'magazine'},{j:'レポート',r:'repōto',e:'report'},{j:'しゅくだい',r:'shukudai',e:'homework'},{j:'かく',r:'kaku',e:'to write'},{j:'かう',r:'kau',e:'to buy'},{j:'うち',r:'uchi',e:'home'}]
 };
 
-function speak(t){if(typeof responsiveVoice==='undefined')return;responsiveVoice.speak(t,'Japanese Female',{rate:0.9});}
+function speak(t){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=0.85;speechSynthesis.speak(u);}
 
 function activateLessonTab(tab){
   const te=document.getElementById('ltabs');
@@ -1287,11 +1286,10 @@ function renderD(n,data,el){
   const playBtn=document.createElement('button');playBtn.className='dial-play';playBtn.textContent='▶ Play full conversation';
   let playing=false;
   playBtn.onclick=()=>{
-    if(playing){if(typeof responsiveVoice!=='undefined')responsiveVoice.cancel();playing=false;playBtn.textContent='▶ Play full conversation';playBtn.disabled=false;return;}
+    if(playing){speechSynthesis.cancel();playing=false;playBtn.textContent='▶ Play full conversation';return;}
+    if(!('speechSynthesis' in window))return;
     playing=true;playBtn.textContent='⏹ Stop';
     let i=0;
-    if(typeof responsiveVoice==='undefined'){playing=false;playBtn.textContent='▶ Play full conversation';alert('Voice not loaded yet, try again in a moment.');return;}
-    responsiveVoice.cancel();
     function playNext(){
       if(i>=lines.length||!playing){
         playing=false;playBtn.textContent='▶ Play full conversation';
@@ -1301,10 +1299,17 @@ function renderD(n,data,el){
       const line=lines[i];
       wrap.querySelectorAll('.dial-line').forEach((l,idx)=>l.style.opacity=idx===i?'1':'.45');
       i++;
-      const voice=line.s==='A'?'Japanese Female':'Japanese Male';
-      responsiveVoice.speak(line.j,voice,{rate:0.9,onend:()=>{if(playing)setTimeout(playNext,400);}});
+      const u=new SpeechSynthesisUtterance(line.j);
+      u.lang='ja-JP';u.rate=0.85;
+      u.onend=()=>{if(playing)setTimeout(playNext,400);};
+      u.onerror=()=>{if(playing)setTimeout(playNext,800);};
+      speechSynthesis.speak(u);
     }
-    playNext();
+    speechSynthesis.cancel();
+    const primer=new SpeechSynthesisUtterance(' ');
+    primer.volume=0;primer.lang='ja-JP';
+    primer.onend=()=>setTimeout(playNext,100);
+    speechSynthesis.speak(primer);
   };
   el.appendChild(playBtn);
 
