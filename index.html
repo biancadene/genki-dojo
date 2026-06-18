@@ -529,7 +529,16 @@ const LD={
     {t:'mc',q:'みちこさん ___ にほんじんです。',h:'Michiko is also Japanese.',o:['も','は','を','の'],a:'も',x:'も = also / too',gp:3},
     {t:'finish',q:'これは スーさん ___ ほんです。',h:'の connects possessor to thing',a:'の',x:"スーさんの ほん = Sue's book",gp:2}
   ],
-  p:[{j:'これは いくらですか',r:'Kore wa ikura desu ka',e:'How much is this?'},{j:'トイレは どこですか',r:'Toire wa doko desu ka',e:'Where is the restroom?'},{j:'それは だれの かばんですか',r:'Sore wa dare no kaban desu ka',e:'Whose bag is that?'}]
+  p:[{j:'これは いくらですか',r:'Kore wa ikura desu ka',e:'How much is this?'},{j:'トイレは どこですか',r:'Toire wa doko desu ka',e:'Where is the restroom?'},{j:'それは だれの かばんですか',r:'Sore wa dare no kaban desu ka',e:'Whose bag is that?'}],
+  d:[
+    {s:'A',j:'すみません、これは いくらですか？',r:'Sumimasen, kore wa ikura desu ka?',e:'Excuse me, how much is this?'},
+    {s:'B',j:'それは 1200えん です。',r:'Sore wa sen nihyaku en desu.',e:'That is 1,200 yen.'},
+    {s:'A',j:'あれは なんですか？',r:'Are wa nan desu ka?',e:'What is that over there?'},
+    {s:'B',j:'あれは てちょう です。1500えん です。',r:'Are wa techo desu. Sen gohyaku en desu.',e:'That is a planner. It is 1,500 yen.'},
+    {s:'A',j:'このてちょうは かわいいですね。',r:'Kono techo wa kawaii desu ne.',e:'This planner is cute, isn\'t it.'},
+    {s:'B',j:'ありがとうございます。でも、それは てちょう じゃないです。じしょ です。',r:'Arigato gozaimasu. Demo, sore wa techo ja nai desu. Jisho desu.',e:'Thank you. But that is not a planner — it is a dictionary.'},
+    {s:'A',j:'そうですか！じゃ、このじしょを ください。',r:'So desu ka! Ja, kono jisho o kudasai.',e:'Is that so! Then I will take this dictionary please.'}
+  ]
 },
 3:{
   g:[
@@ -565,15 +574,6 @@ const LD={
     {s:'B',j:'たいてい うちで たべます。あなたは？',r:'Taitei uchi de tabemasu. Anata wa?',e:'I usually eat at home. What about you?'},
     {s:'A',j:'わたしは ときどき そとで たべます。あした いっしょに たべませんか？',r:'Watashi wa tokidoki soto de tabemasu. Ashita issho ni tabemasen ka?',e:'I sometimes eat out. Would you like to eat together tomorrow?'},
     {s:'B',j:'いいですね！いきましょう！',r:'Ii desu ne! Ikimashyo!',e:'Sounds great! Let us go!'}
-  ],
-  d:[
-    {s:'A',j:'すみません、これは いくらですか？',r:'Sumimasen, kore wa ikura desu ka?',e:'Excuse me, how much is this?'},
-    {s:'B',j:'それは 1200えん です。',r:'Sore wa sen nihyaku en desu.',e:'That is 1,200 yen.'},
-    {s:'A',j:'あれは なんですか？',r:'Are wa nan desu ka?',e:'What is that over there?'},
-    {s:'B',j:'あれは てちょう です。1500えん です。',r:'Are wa techo desu. Sen gohyaku en desu.',e:'That is a planner. It is 1,500 yen.'},
-    {s:'A',j:'このてちょうは かわいいですね。',r:'Kono techo wa kawaii desu ne.',e:'This planner is cute, isn&#39;t it.'},
-    {s:'B',j:'ありがとうございます。でも、それは てちょう じゃないです。じしょ です。',r:'Arigato gozaimasu. Demo, sore wa techo ja nai desu. Jisho desu.',e:'Thank you. But that is not a planner — it is a dictionary.'},
-    {s:'A',j:'そうですか！じゃ、このじしょを ください。',r:'So desu ka! Ja, kono jisho o kudasai.',e:'Is that so! Then I will take this dictionary please.'}
   ]
 },
 4:{
@@ -1290,15 +1290,21 @@ function renderD(n,data,el){
     playing=true;playBtn.textContent='⏹ Stop';
     let i=0;
     function playNext(){
-      if(i>=lines.length||!playing){playing=false;playBtn.textContent='▶ Play full conversation';playBtn.disabled=false;return;}
+      if(i>=lines.length||!playing){
+        playing=false;playBtn.textContent='▶ Play full conversation';
+        wrap.querySelectorAll('.dial-line').forEach(l=>l.style.opacity='1');
+        return;
+      }
       const line=lines[i];
-      // Highlight current line
       wrap.querySelectorAll('.dial-line').forEach((l,idx)=>l.style.opacity=idx===i?'1':'.45');
-      speak(line.j);
       i++;
-      // Estimate duration: ~60ms per character for Japanese
-      const dur=Math.max(1200,line.j.length*80);
-      setTimeout(playNext,dur);
+      if(!('speechSynthesis' in window))return;
+      speechSynthesis.cancel();
+      const u=new SpeechSynthesisUtterance(line.j);
+      u.lang='ja-JP';u.rate=0.85;
+      u.onend=()=>{if(playing)setTimeout(playNext,420);};
+      u.onerror=()=>{if(playing)setTimeout(playNext,800);};
+      speechSynthesis.speak(u);
     }
     playNext();
   };
