@@ -123,6 +123,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;background-im
 .ltab[data-t="vocab"].on{color:var(--blue);border-bottom-color:var(--blue)}
 .ltab[data-t="exercises"].on{color:var(--grn2);border-bottom-color:var(--grn2)}
 .ltab[data-t="speak"].on{color:var(--yel2);border-bottom-color:var(--yel2)}
+.ltab[data-t="dialogue"].on{color:var(--red2);border-bottom-color:var(--red2)}
 .lcon{padding:1.5rem 2rem 2.5rem;max-width:1100px;margin:0 auto}
 .gp{background:rgba(255,255,255,.03);border:1px solid rgba(255,143,171,.10);border-left:3px solid var(--red2);border-radius:0 8px 8px 0;padding:1rem 1.1rem;margin-bottom:.75rem}
 .gp-n{font-family:'DM Sans',sans-serif;font-size:1.1rem;color:var(--red);font-weight:700;margin-bottom:2px}
@@ -280,6 +281,33 @@ button{-webkit-tap-highlight-color:transparent}
 .ex-clear:hover{background:rgba(255,255,255,.08)}
 .spk{background:none;border:none;cursor:pointer;font-size:.95rem;padding:3px 6px;border-radius:6px;color:var(--i40);transition:color .15s,background .15s;line-height:1;flex-shrink:0}
 .spk:hover{color:var(--ink);background:var(--p3)}
+
+/* Dialogue */
+.dial-wrap{margin-bottom:.75rem}
+.dial-play{width:100%;padding:11px;background:linear-gradient(135deg,var(--red2),#ffb2c6);color:#1a1117;border:none;border-radius:14px;font-size:.88rem;font-family:var(--fb);font-weight:700;cursor:pointer;transition:opacity .15s;margin-bottom:.9rem}
+.dial-play:hover{opacity:.88}
+.dial-play:disabled{opacity:.5;cursor:default}
+.dial-line{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--i15)}
+.dial-line:last-child{border-bottom:none}
+.dial-line.speaker-b{flex-direction:row-reverse}
+.dial-av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:2px}
+.dial-line.speaker-a .dial-av{background:var(--rbg);border:1px solid var(--rln);color:var(--red2)}
+.dial-line.speaker-b .dial-av{background:var(--bbg);border:1px solid var(--bln);color:var(--blue)}
+.dial-bubble{flex:1;min-width:0}
+.dial-line.speaker-b .dial-bubble{text-align:right}
+.dial-j{font-size:.95rem;color:var(--ink);line-height:1.55;margin-bottom:2px}
+.dial-r{font-size:.68rem;color:var(--i40);margin-bottom:1px;display:none}
+.dial-e{font-size:.75rem;color:var(--i70);display:none}
+.dial-bubble.show .dial-r,.dial-bubble.show .dial-e{display:block}
+.dial-actions{display:flex;gap:6px;margin-top:4px;justify-content:flex-start}
+.dial-line.speaker-b .dial-actions{justify-content:flex-end}
+.dial-toggle{font-size:.62rem;padding:2px 8px;border-radius:999px;border:1px solid var(--i15);background:var(--p3);color:var(--i40);cursor:pointer;font-family:var(--fb);transition:all .15s}
+.dial-toggle:hover{border-color:#555;color:var(--ink)}
+.dial-controls{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem}
+.dial-showall{font-size:.72rem;padding:.4rem .8rem;border-radius:999px;border:1px solid rgba(255,143,171,.18);background:rgba(255,255,255,.04);color:var(--ink);cursor:pointer;font-family:var(--fb);font-weight:600;transition:background .15s}
+.dial-showall:hover{background:rgba(255,255,255,.08)}
+.dial-topic{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--i40)}
+
 .vlist-sub{padding:7px 1.1rem;background:rgba(255,255,255,.02);border-bottom:1px solid var(--i15);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--i40)}
 </style>
 <link rel="manifest" href="manifest.webmanifest">
@@ -463,7 +491,16 @@ const LD={
     {t:'write',q:'Translate: "I am a student."',h:'わたし は ___ です',a:'わたしはがくせいです',alt:['わたし は がくせい です'],x:'わたしは がくせい です。',gp:0},
     {t:'mc',q:'せんもんは ___ ですか。',h:'What is your major?',o:['なん','はい','いいえ','ごご'],a:'なん',x:'なん = what (before です)',gp:1}
   ],
-  p:[{j:'はじめまして',r:'Hajimemashite',e:'Nice to meet you'},{j:'わたしは がくせい です',r:'Watashi wa gakusei desu',e:'I am a student'},{j:'おなまえは なんですか',r:'Onamae wa nan desu ka',e:'What is your name?'},{j:'よろしく おねがいします',r:'Yoroshiku onegaishimasu',e:'Please treat me well'}]
+  p:[{j:'はじめまして',r:'Hajimemashite',e:'Nice to meet you'},{j:'わたしは がくせい です',r:'Watashi wa gakusei desu',e:'I am a student'},{j:'おなまえは なんですか',r:'Onamae wa nan desu ka',e:'What is your name?'},{j:'よろしく おねがいします',r:'Yoroshiku onegaishimasu',e:'Please treat me well'}],
+  d:[
+    {s:'A',j:'はじめまして。わたしは サラ です。',r:'Hajimemashite. Watashi wa Sara desu.',e:'Nice to meet you. I am Sara.'},
+    {s:'B',j:'はじめまして。たなか けんじ です。よろしく おねがいします。',r:'Hajimemashite. Tanaka Kenji desu. Yoroshiku onegaishimasu.',e:'Nice to meet you. I am Kenji Tanaka. Please treat me well.'},
+    {s:'A',j:'たなかさんは がくせい ですか？',r:'Tanaka-san wa gakusei desu ka?',e:'Tanaka-san, are you a student?'},
+    {s:'B',j:'はい、そうです。だいがくの いちねんせい です。サラさんは？',r:'Hai, so desu. Daigaku no ichinensei desu. Sara-san wa?',e:'Yes, I am. First-year university student. What about you?'},
+    {s:'A',j:'わたしも がくせい です。せんもんは にほんご です。',r:'Watashi mo gakusei desu. Senmon wa Nihongo desu.',e:'I am also a student. My major is Japanese.'},
+    {s:'B',j:'そうですか！わたしの せんもんも にほんご です！',r:'So desu ka! Watashi no senmon mo Nihongo desu!',e:'Is that so! My major is also Japanese!'},
+    {s:'A',j:'ほんとうですか？よろしく おねがいします！',r:'Honto desu ka? Yoroshiku onegaishimasu!',e:'Really? Please treat me well!'}
+  ]
 },
 2:{
   g:[
@@ -518,7 +555,26 @@ const LD={
     {t:'mc',q:'いく → ます form',h:'U-verb',o:['いきます','いります','いえます','いします'],a:'いきます',x:'いく → いきます (U-verb)',gp:0},
     {t:'mc',q:'わたしは あまり テレビを ___。',h:'あまり must use negative.',o:['みません','みます','みますか','みませんか'],a:'みません',x:'あまり and ぜんぜん always pair with negative verb.',gp:2}
   ],
-  p:[{j:'まいにち コーヒーを のみます',r:'Mainichi kōhī o nomimasu',e:'I drink coffee every day'},{j:'としょかんで にほんごを べんきょうします',r:'Toshokan de Nihongo o benkyō shimasu',e:'I study Japanese at the library'},{j:'あした えいがを みませんか',r:'Ashita eiga o mimasen ka',e:'Would you like to watch a movie tomorrow?'}]
+  p:[{j:'まいにち コーヒーを のみます',r:'Mainichi kōhī o nomimasu',e:'I drink coffee every day'},{j:'としょかんで にほんごを べんきょうします',r:'Toshokan de Nihongo o benkyō shimasu',e:'I study Japanese at the library'},{j:'あした えいがを みませんか',r:'Ashita eiga o mimasen ka',e:'Would you like to watch a movie tomorrow?'}],
+  d:[
+    {s:'A',j:'まいにち なにを しますか？',r:'Mainichi nani o shimasu ka?',e:'What do you do every day?'},
+    {s:'B',j:'あさ コーヒーを のみます。それから、がっこうに いきます。',r:'Asa kohi o nomimasu. Sorekara, gakko ni ikimasu.',e:'I drink coffee in the morning. Then I go to school.'},
+    {s:'A',j:'がっこうで なにを べんきょうしますか？',r:'Gakko de nani o benkyo shimasu ka?',e:'What do you study at school?'},
+    {s:'B',j:'にほんごを べんきょうします。ときどき としょかんで よみます。',r:'Nihongo o benkyo shimasu. Tokidoki toshokan de yomimasu.',e:'I study Japanese. I sometimes read at the library.'},
+    {s:'A',j:'ばんごはんは どこで たべますか？',r:'Bangohan wa doko de tabemasu ka?',e:'Where do you eat dinner?'},
+    {s:'B',j:'たいてい うちで たべます。あなたは？',r:'Taitei uchi de tabemasu. Anata wa?',e:'I usually eat at home. What about you?'},
+    {s:'A',j:'わたしは ときどき そとで たべます。あした いっしょに たべませんか？',r:'Watashi wa tokidoki soto de tabemasu. Ashita issho ni tabemasen ka?',e:'I sometimes eat out. Would you like to eat together tomorrow?'},
+    {s:'B',j:'いいですね！いきましょう！',r:'Ii desu ne! Ikimashyo!',e:'Sounds great! Let us go!'}
+  ],
+  d:[
+    {s:'A',j:'すみません、これは いくらですか？',r:'Sumimasen, kore wa ikura desu ka?',e:'Excuse me, how much is this?'},
+    {s:'B',j:'それは 1200えん です。',r:'Sore wa sen nihyaku en desu.',e:'That is 1,200 yen.'},
+    {s:'A',j:'あれは なんですか？',r:'Are wa nan desu ka?',e:'What is that over there?'},
+    {s:'B',j:'あれは てちょう です。1500えん です。',r:'Are wa techo desu. Sen gohyaku en desu.',e:'That is a planner. It is 1,500 yen.'},
+    {s:'A',j:'このてちょうは かわいいですね。',r:'Kono techo wa kawaii desu ne.',e:'This planner is cute, isn&#39;t it.'},
+    {s:'B',j:'ありがとうございます。でも、それは てちょう じゃないです。じしょ です。',r:'Arigato gozaimasu. Demo, sore wa techo ja nai desu. Jisho desu.',e:'Thank you. But that is not a planner — it is a dictionary.'},
+    {s:'A',j:'そうですか！じゃ、このじしょを ください。',r:'So desu ka! Ja, kono jisho o kudasai.',e:'Is that so! Then I will take this dictionary please.'}
+  ]
 },
 4:{
   g:[
@@ -545,7 +601,17 @@ const LD={
     {t:'mc',q:'きのう コーヒーを ___。',h:'I drank coffee yesterday.',o:['のみました','のみます','のみません','のみませんでした'],a:'のみました',x:'Past affirmative: 〜ます → 〜ました',gp:0},
     {t:'mc',q:'わたしは きのう べんきょう ___。',h:'I did NOT study yesterday.',o:['しませんでした','しました','しません','しませんか'],a:'しませんでした',x:'Past negative: 〜ません → 〜ませんでした',gp:0}
   ],
-  p:[{j:'きのう えいがを みました',r:'Kinō eiga o mimashita',e:'I watched a movie yesterday'},{j:'こうえんに いぬが います',r:'Kōen ni inu ga imasu',e:'There is a dog in the park'},{j:'ぎんこうの となりに ほんやが あります',r:'Ginkō no tonari ni hon-ya ga arimasu',e:'There is a bookstore next to the bank'}]
+  p:[{j:'きのう えいがを みました',r:'Kinō eiga o mimashita',e:'I watched a movie yesterday'},{j:'こうえんに いぬが います',r:'Kōen ni inu ga imasu',e:'There is a dog in the park'},{j:'ぎんこうの となりに ほんやが あります',r:'Ginkō no tonari ni hon-ya ga arimasu',e:'There is a bookstore next to the bank'}],
+  d:[
+    {s:'A',j:'きのう どこに いきましたか？',r:'Kino doko ni ikimashita ka?',e:'Where did you go yesterday?'},
+    {s:'B',j:'こうえんに いきました。いぬが たくさん いました！',r:'Koen ni ikimashita. Inu ga takusan imashita!',e:'I went to the park. There were lots of dogs!'},
+    {s:'A',j:'たのしかったですか？',r:'Tanoshikatta desu ka?',e:'Was it fun?'},
+    {s:'B',j:'はい！でも、かさを わすれました。あめが ふりました。',r:'Hai! Demo, kasa o wasuremashita. Ame ga furimashita.',e:'Yes! But I forgot my umbrella. It rained.'},
+    {s:'A',j:'えー！かばんの なかに かさが ありましたか？',r:'E! Kaban no naka ni kasa ga arimashita ka?',e:'Oh no! Did you have an umbrella in your bag?'},
+    {s:'B',j:'ありませんでした。こうえんの となりに コンビニが ありました。',r:'Arimasen deshita. Koen no tonari ni konbini ga arimashita.',e:'I did not. But there was a convenience store next to the park.'},
+    {s:'A',j:'よかった！コンビニで かいましたか？',r:'Yokatta! Konbini de kaimashita ka?',e:'Thank goodness! Did you buy one there?'},
+    {s:'B',j:'はい、かいました。',r:'Hai, kaimashita.',e:'Yes, I did.'}
+  ]
 },
 5:{
   g:[
@@ -576,7 +642,17 @@ const LD={
     {t:'mc',q:'わたしは すし___ だいすきです。',h:'What particle marks what you like?',o:['が','を','は','に'],a:'が',x:'すき/きらい use が, not を!',gp:2},
     {t:'mc',q:'えいがを み___！（Let\'s watch!）',h:'Suggestion',o:['ましょう','ませんか','ますか','ません'],a:'ましょう',x:'〜ましょう = Let\'s ~',gp:3}
   ],
-  p:[{j:'わたしは すしが だいすきです',r:'Watashi wa sushi ga daisuki desu',e:'I love sushi'},{j:'きのうは たのしかったです',r:'Kinō wa tanoshikatta desu',e:'Yesterday was fun'},{j:'いっしょに えいがを みましょう',r:'Issho ni eiga o mimashō',e:"Let's watch a movie together"}]
+  p:[{j:'わたしは すしが だいすきです',r:'Watashi wa sushi ga daisuki desu',e:'I love sushi'},{j:'きのうは たのしかったです',r:'Kinō wa tanoshikatta desu',e:'Yesterday was fun'},{j:'いっしょに えいがを みましょう',r:'Issho ni eiga o mimashō',e:"Let's watch a movie together"}],
+  d:[
+    {s:'A',j:'おきなわは どうでしたか？',r:'Okinawa wa do deshita ka?',e:'How was Okinawa?'},
+    {s:'B',j:'とても たのしかったです！うみが きれいでした。',r:'Totemo tanoshikatta desu! Umi ga kirei deshita.',e:'It was so much fun! The ocean was beautiful.'},
+    {s:'A',j:'たべものは どうでしたか？',r:'Tabemono wa do deshita ka?',e:'How was the food?'},
+    {s:'B',j:'おいしかったです！わたしは ソーキそばが だいすきです。',r:'Oishikatta desu! Watashi wa soki soba ga daisuki desu.',e:'It was delicious! I love Okinawan soba.'},
+    {s:'A',j:'いいですね。わたしは からいたべものが すきじゃないです。',r:'Ii desu ne. Watashi wa karai tabemono ga suki ja nai desu.',e:'Nice. I do not like spicy food.'},
+    {s:'B',j:'ソーキそばは からくないですよ。やさしい あじです。',r:'Soki soba wa karakunai desu yo. Yasashii aji desu.',e:'Okinawan soba is not spicy. It has a gentle flavor.'},
+    {s:'A',j:'そうですか！じゃ、こんど いっしょに いきましょう！',r:'So desu ka! Ja, kondo issho ni ikimashyo!',e:'Is that so! Then let us go together next time!'},
+    {s:'B',j:'いきましょう！たのしみですね。',r:'Ikimashyo! Tanoshimi desu ne.',e:'Let us go! I am looking forward to it.'}
+  ]
 },
 6:{
   g:[
@@ -605,7 +681,18 @@ const LD={
     {t:'mc',q:'のむ → て-form',h:'む ending',o:['のんで','のみて','のんて','のいで'],a:'のんで',x:'む/ぶ/ぬ → んで',gp:0},
     {t:'mc',q:'いく → て-form',h:'Exception!',o:['いって','いいて','いきて','いいで'],a:'いって',x:'いく is an exception: いく→いって',gp:0}
   ],
-  p:[{j:'まどを あけてください',r:'Mado o akete kudasai',e:'Please open the window'},{j:'ちょっと まってください',r:'Chotto matte kudasai',e:'Please wait a moment'},{j:'ここで しゃしんを とっては いけません',r:'Koko de shashin o totte wa ikemasen',e:'You must not take photos here'}]
+  p:[{j:'まどを あけてください',r:'Mado o akete kudasai',e:'Please open the window'},{j:'ちょっと まってください',r:'Chotto matte kudasai',e:'Please wait a moment'},{j:'ここで しゃしんを とっては いけません',r:'Koko de shashin o totte wa ikemasen',e:'You must not take photos here'}],
+  d:[
+    {s:'A',j:'すみません、ちょっと まってください。',r:'Sumimasen, chotto matte kudasai.',e:'Excuse me, please wait a moment.'},
+    {s:'B',j:'はい、どうぞ。',r:'Hai, dozo.',e:'Yes, go ahead.'},
+    {s:'A',j:'このへやで たべても いいですか？',r:'Kono heya de tabete mo ii desu ka?',e:'May I eat in this room?'},
+    {s:'B',j:'すみません、このへやで たべては いけません。',r:'Sumimasen, kono heya de tabete wa ikemasen.',e:'I am sorry, you must not eat in this room.'},
+    {s:'A',j:'そうですか。では、どこで たべられますか？',r:'So desu ka. Dewa, doko de taberaremasu ka?',e:'I see. Then where can I eat?'},
+    {s:'B',j:'となりの へやで たべてください。',r:'Tonari no heya de tabete kudasai.',e:'Please eat in the next room.'},
+    {s:'A',j:'わかりました。ありがとうございます。',r:'Wakarimashita. Arigato gozaimasu.',e:'Understood. Thank you.'},
+    {s:'B',j:'あ、まどを しめてください。さむいですから。',r:'A, mado o shimete kudasai. Samui desu kara.',e:'Oh, please close the window. It is cold.'},
+    {s:'A',j:'はい、しめます。',r:'Hai, shimemasu.',e:'Yes, I will close it.'}
+  ]
 },
 7:{
   g:[
@@ -635,7 +722,17 @@ const LD={
     {t:'mc',q:'すしを たべ ___ いきます。',h:"I'm going to eat sushi.",o:['に','を','で','と'],a:'に',x:'verb stem + にいく = go in order to do ~',gp:2},
     {t:'write',q:"Translate: \"I'm going to see a movie.\"",h:'えいが + み + にいきます',a:'えいがをみにいきます',alt:['えいがを みに いきます'],x:'えいがを みにいきます。',gp:2}
   ],
-  p:[{j:'いま なにを していますか',r:'Ima nani o shite imasu ka',e:"What are you doing now?"},{j:'たけしさんは けっこんしています',r:'Takeshi-san wa kekkon shite imasu',e:'Takeshi is married'},{j:'すしを たべに いきます',r:'Sushi o tabe ni ikimasu',e:"I'm going to eat sushi"}]
+  p:[{j:'いま なにを していますか',r:'Ima nani o shite imasu ka',e:"What are you doing now?"},{j:'たけしさんは けっこんしています',r:'Takeshi-san wa kekkon shite imasu',e:'Takeshi is married'},{j:'すしを たべに いきます',r:'Sushi o tabe ni ikimasu',e:"I'm going to eat sushi"}],
+  d:[
+    {s:'A',j:'いま なにを していますか？',r:'Ima nani o shite imasu ka?',e:'What are you doing now?'},
+    {s:'B',j:'かぞくの しゃしんを みています。',r:'Kazoku no shashin o mite imasu.',e:'I am looking at photos of my family.'},
+    {s:'A',j:'かぞくは なんにんですか？',r:'Kazoku wa nan-nin desu ka?',e:'How many people are in your family?'},
+    {s:'B',j:'よにんです。ちちと はは、そして あにが います。',r:'Yo-nin desu. Chichi to haha, soshite ani ga imasu.',e:'Four people. My father, mother, and older brother.'},
+    {s:'A',j:'おにいさんは いま どこに すんでいますか？',r:'Onii-san wa ima doko ni sunde imasu ka?',e:'Where does your older brother live now?'},
+    {s:'B',j:'とうきょうに すんでいます。しごとを しています。',r:'Tokyo ni sunde imasu. Shigoto o shite imasu.',e:'He lives in Tokyo. He is working.'},
+    {s:'A',j:'けっこんしていますか？',r:'Kekkon shite imasu ka?',e:'Is he married?'},
+    {s:'B',j:'はい。こどもが ふたり います。あいに いきたいです。',r:'Hai. Kodomo ga futari imasu. Ai ni ikitai desu.',e:'Yes. He has two children. I want to go visit them.'}
+  ]
 },
 8:{
   g:[
@@ -664,7 +761,17 @@ const LD={
     {t:'mc',q:'えいがを みる ___ すきです。',h:'I like watching movies.',o:['のが','のを','のに','のは'],a:'のが',x:'verb + のがすきです = I like doing ~',gp:3},
     {t:'mc',q:'たけしさんは にほんじん ___ とおもいます。',h:'Short form of だ',o:['だ','です','な','で'],a:'だ',x:'noun + だ = short form affirmative',gp:1}
   ],
-  p:[{j:'メアリーさんは いえに いると おもいます',r:'Mearii-san wa ie ni iru to omoimasu',e:'I think Mary is at home'},{j:'えいがを みるのが すきです',r:'Eiga o miru no ga suki desu',e:'I like watching movies'},{j:'なにか たべたいですか',r:'Nanika tabetai desu ka',e:'Would you like to eat something?'}]
+  p:[{j:'メアリーさんは いえに いると おもいます',r:'Mearii-san wa ie ni iru to omoimasu',e:'I think Mary is at home'},{j:'えいがを みるのが すきです',r:'Eiga o miru no ga suki desu',e:'I like watching movies'},{j:'なにか たべたいですか',r:'Nanika tabetai desu ka',e:'Would you like to eat something?'}],
+  d:[
+    {s:'A',j:'たろうさんは くると おもいますか？',r:'Taro-san wa kuru to omoimasu ka?',e:'Do you think Taro will come?'},
+    {s:'B',j:'うーん、くると おもいます。でも、おそいと おもいます。',r:'Un, kuru to omoimasu. Demo, osoi to omoimasu.',e:'Hmm, I think he will come. But I think he will be late.'},
+    {s:'A',j:'そうですね。ここで たべるのが すきですか？',r:'So desu ne. Koko de taberu no ga suki desu ka?',e:'I see. Do you like eating here?'},
+    {s:'B',j:'はい、そとで たべるのが だいすきです！',r:'Hai, soto de taberu no ga daisuki desu!',e:'Yes, I love eating outside!'},
+    {s:'A',j:'わたしも！あ、そこで ボールを なげないでください。あぶないです。',r:'Watashi mo! A, soko de boru o nagenaide kudasai. Abunai desu.',e:'Me too! Oh, please do not throw the ball there. It is dangerous.'},
+    {s:'B',j:'あ、すみません！わかりました。',r:'A, sumimasen! Wakarimashita.',e:'Oh, sorry! Understood.'},
+    {s:'A',j:'のみものは なにが いいですか？',r:'Nomimono wa nani ga ii desu ka?',e:'What would you like to drink?'},
+    {s:'B',j:'みずで いいです。くるまで きたので、おさけは のまないと おもいます。',r:'Mizu de ii desu. Kuruma de kita node, osake wa nomanai to omoimasu.',e:'Water is fine. I came by car, so I think I will not drink alcohol.'}
+  ]
 },
 9:{
   g:[
@@ -694,7 +801,17 @@ const LD={
     {t:'mc',q:'まだ しゅくだいを して ___。',h:"Haven't done homework yet.",o:['いません','います','いました','いませんでした'],a:'いません',x:"まだ〜ていません = haven't done yet",gp:3},
     {t:'mc',q:'たけしさんが ___ りょうり は おいしいです。',h:'Short past form modifies noun',o:['つくった','つくる','つくって','つくり'],a:'つくった',x:'short past + noun = noun that ~',gp:1}
   ],
-  p:[{j:'きょうとに いきたいです',r:'Kyōto ni ikitai desu',e:'I want to go to Kyoto'},{j:'まだ しゅくだいを していません',r:'Mada shukudai o shite imasen',e:"I haven't done homework yet"},{j:'もう ごはんを たべました',r:'Mō gohan o tabemashita',e:"I've already eaten"}]
+  p:[{j:'きょうとに いきたいです',r:'Kyōto ni ikitai desu',e:'I want to go to Kyoto'},{j:'まだ しゅくだいを していません',r:'Mada shukudai o shite imasen',e:"I haven't done homework yet"},{j:'もう ごはんを たべました',r:'Mō gohan o tabemashita',e:"I've already eaten"}],
+  d:[
+    {s:'A',j:'にほんで いちばん なにを したいですか？',r:'Nihon de ichiban nani o shitai desu ka?',e:'What do you most want to do in Japan?'},
+    {s:'B',j:'かぶきを みたいです！ずっと みたかったです。',r:'Kabuki o mitai desu! Zutto mitakatta desu.',e:'I want to see kabuki! I have always wanted to.'},
+    {s:'A',j:'まだ みたことが ないですか？',r:'Mada mita koto ga nai desu ka?',e:'You have not seen it yet?'},
+    {s:'B',j:'はい、まだです。チケットが たかいから、なかなか いけませんでした。',r:'Hai, mada desu. Chiketto ga takai kara, nakanaka ikemasen deshita.',e:'Not yet. Because tickets are expensive, I have not been able to go.'},
+    {s:'A',j:'ともだちが すすめた かぶきざは どうですか？',r:'Tomodachi ga susumeta Kabukiza wa do desu ka?',e:'How about the Kabukiza that a friend recommended?'},
+    {s:'B',j:'いいですね！もう チケットを かいましたか？',r:'Ii desu ne! Mo chiketto o kaimashita ka?',e:'Sounds great! Have you already bought tickets?'},
+    {s:'A',j:'いいえ、まだです。いっしょに かいに いきましょう。',r:'Iie, mada desu. Issho ni kai ni ikimashyo.',e:'No, not yet. Let us go buy them together.'},
+    {s:'B',j:'ぜひ！たのしみです！',r:'Zehi! Tanoshimi desu!',e:'Definitely! I am looking forward to it!'}
+  ]
 },
 10:{
   g:[
@@ -724,7 +841,17 @@ const LD={
     {t:'mc',q:'らいねん にほんに いく ___ です。',h:'I intend to go to Japan next year.',o:['つもり','ほうが','ので','から'],a:'つもり',x:'〜つもりです = I intend to ~',gp:2},
     {t:'mc',q:'しんかんせん ___ きょうとに いきます。',h:'By bullet train',o:['で','に','を','から'],a:'で',x:'〜で = by means of',gp:0}
   ],
-  p:[{j:'しんかんせんで きょうとに いきます',r:'Shinkansen de Kyōto ni ikimasu',e:"I'll go to Kyoto by bullet train"},{j:'にほんごが じょうずに なりました',r:'Nihongo ga jōzu ni narimashita',e:'My Japanese has improved'},{j:'らいねん にほんに いく つもりです',r:'Rainen Nihon ni iku tsumori desu',e:'I intend to go to Japan next year'}]
+  p:[{j:'しんかんせんで きょうとに いきます',r:'Shinkansen de Kyōto ni ikimasu',e:"I'll go to Kyoto by bullet train"},{j:'にほんごが じょうずに なりました',r:'Nihongo ga jōzu ni narimashita',e:'My Japanese has improved'},{j:'らいねん にほんに いく つもりです',r:'Rainen Nihon ni iku tsumori desu',e:'I intend to go to Japan next year'}],
+  d:[
+    {s:'A',j:'なつと ふゆと どちらが すきですか？',r:'Natsu to fuyu to dochira ga suki desu ka?',e:'Which do you prefer, summer or winter?'},
+    {s:'B',j:'ふゆの ほうが すきです。なつより すずしいですから。',r:'Fuyu no ho ga suki desu. Natsu yori suzushii desu kara.',e:'I prefer winter. Because it is cooler than summer.'},
+    {s:'A',j:'そうですか。わたしは なつが いちばん すきです。',r:'So desu ka. Watashi wa natsu ga ichiban suki desu.',e:'Is that so. I like summer the most.'},
+    {s:'B',j:'ふゆやすみは なにを する つもりですか？',r:'Fuyuyasumi wa nani o suru tsumori desu ka?',e:'What do you plan to do during winter break?'},
+    {s:'A',j:'ほっかいどうに いく つもりです。ゆきを みたいです。',r:'Hokkaido ni iku tsumori desu. Yuki o mitai desu.',e:'I plan to go to Hokkaido. I want to see snow.'},
+    {s:'B',j:'いいですね！ほっかいどうは にほんで いちばん ゆきが おおいですよ。',r:'Ii desu ne! Hokkaido wa Nihon de ichiban yuki ga oi desu yo.',e:'Nice! Hokkaido has the most snow in Japan.'},
+    {s:'A',j:'たのしみです。にほんごも もっと じょうずに なりたいです。',r:'Tanoshimi desu. Nihongo mo motto jozu ni naritai desu.',e:'I am looking forward to it. I also want to get better at Japanese.'},
+    {s:'B',j:'きっと なれますよ！がんばってください！',r:'Kitto naremasu yo! Ganbatte kudasai!',e:'You definitely will! Keep it up!'}
+  ]
 },
 11:{
   g:[
@@ -749,7 +876,17 @@ const LD={
     {t:'write',q:'Translate: "I have eaten sushi before."',h:'すしを + たべた + ことがあります',a:'すしをたべたことがあります',alt:['すしを たべた ことがあります'],x:'すしを たべたことがあります。',gp:1},
     {t:'mc',q:'きょうとや なら ___ いきました。',h:'Went to places like Kyoto and Nara',o:['に','と','で','を'],a:'に',x:'きょうとや ならに — や = non-exhaustive, に = destination',gp:2}
   ],
-  p:[{j:'しゅうまつは えいがを みたり おんがくを きいたり します',r:'Shūmatsu wa eiga o mitari ongaku o kiitari shimasu',e:'On weekends I do things like watch movies and listen to music'},{j:'にほんに いった ことが あります',r:'Nihon ni itta koto ga arimasu',e:'I have been to Japan before'},{j:'きょうとや ならに いきました',r:'Kyōto ya Nara ni ikimashita',e:'I went to places like Kyoto and Nara'}]
+  p:[{j:'しゅうまつは えいがを みたり おんがくを きいたり します',r:'Shūmatsu wa eiga o mitari ongaku o kiitari shimasu',e:'On weekends I do things like watch movies and listen to music'},{j:'にほんに いった ことが あります',r:'Nihon ni itta koto ga arimasu',e:'I have been to Japan before'},{j:'きょうとや ならに いきました',r:'Kyōto ya Nara ni ikimashita',e:'I went to places like Kyoto and Nara'}],
+  d:[
+    {s:'A',j:'なつやすみは どうでしたか？',r:'Natsuyasumi wa do deshita ka?',e:'How was your summer vacation?'},
+    {s:'B',j:'たのしかったです！おんせんに はいったり、やまに のぼったり しました。',r:'Tanoshikatta desu! Onsen ni haittari, yama ni nobottari shimashita.',e:'It was fun! I did things like go to hot springs and climb mountains.'},
+    {s:'A',j:'いいですね。ふじさんに のぼったことが ありますか？',r:'Ii desu ne. Fujisan ni nobotta koto ga arimasu ka?',e:'Nice. Have you ever climbed Mt. Fuji?'},
+    {s:'B',j:'いいえ、ふじさんには のぼったことが ありません。いつか のぼりたいです。',r:'Iie, Fujisan ni wa nobotta koto ga arimasen. Itsuka noboritai desu.',e:'No, I have never climbed Mt. Fuji. I want to climb it someday.'},
+    {s:'A',j:'わたしは いったことが あります。たいへんでしたが、すばらしかったです。',r:'Watashi wa itta koto ga arimasu. Taihen deshita ga, subarashikatta desu.',e:'I have been. It was tough, but it was wonderful.'},
+    {s:'B',j:'どんな ところに いきましたか？',r:'Donna tokoro ni ikimashita ka?',e:'What kinds of places did you visit?'},
+    {s:'A',j:'きょうとや ならや おおさかに いきました。',r:'Kyoto ya Nara ya Osaka ni ikimashita.',e:'I went to places like Kyoto, Nara, and Osaka.'},
+    {s:'B',j:'いいですね！こんど いっしょに いきたいです！',r:'Ii desu ne! Kondo issho ni ikitai desu!',e:'Wonderful! I would love to go together next time!'}
+  ]
 },
 12:{
   g:[
@@ -780,7 +917,18 @@ const LD={
     {t:'mc',q:'くすりを のんだ ___ いいです。',h:'You should take medicine.',o:['ほうが','つもり','より','ので'],a:'ほうが',x:'〜たほうがいいです = you should ~',gp:2},
     {t:'mc',q:'しけんが ある ___ べんきょうします。',h:'Formal reason word',o:['ので','から','けど','が'],a:'ので',x:'〜ので = because (formal/softer than から)',gp:3}
   ],
-  p:[{j:'くすりを のまなければ いけません',r:'Kusuri o nomanakereba ikemasen',e:'I must take medicine'},{j:'たべすぎました',r:'Tabesugimashita',e:'I ate too much'},{j:'あした あめが ふる でしょう',r:'Ashita ame ga furu deshō',e:'It will probably rain tomorrow'},{j:'おだいじに',r:'Odaiji ni',e:'Get well soon'}]
+  p:[{j:'くすりを のまなければ いけません',r:'Kusuri o nomanakereba ikemasen',e:'I must take medicine'},{j:'たべすぎました',r:'Tabesugimashita',e:'I ate too much'},{j:'あした あめが ふる でしょう',r:'Ashita ame ga furu deshō',e:'It will probably rain tomorrow'},{j:'おだいじに',r:'Odaiji ni',e:'Get well soon'}],
+  d:[
+    {s:'A',j:'かおいろが わるいですね。だいじょうぶですか？',r:'Kaoiro ga warui desu ne. Daijyobu desu ka?',e:'You look pale. Are you okay?'},
+    {s:'B',j:'すこし ねつが あります。のども いたいです。',r:'Sukoshi netsu ga arimasu. Nodo mo itai desu.',e:'I have a slight fever. My throat hurts too.'},
+    {s:'A',j:'それは たいへんですね。はやく びょういんに いったほうがいいです。',r:'Sore wa taihen desu ne. Hayaku byoin ni itta ho ga ii desu.',e:'That sounds rough. You should go to the hospital quickly.'},
+    {s:'B',j:'でも、あした しけんが あるので、べんきょうしなければいけません。',r:'Demo, ashita shiken ga aru node, benkyo shinakereba ikemasen.',e:'But I have an exam tomorrow, so I have to study.'},
+    {s:'A',j:'だめですよ！たべすぎたり、ねなかったりしたから、かぜを ひいたんです。',r:'Dame desu yo! Tabesugitari, nenakattari shita kara, kaze o hiita n desu.',e:'That will not do! You caught a cold from eating too much and not sleeping.'},
+    {s:'B',j:'そうかもしれません。くすりを のんだほうがいいですか？',r:'So kamo shiremasen. Kusuri o nonda ho ga ii desu ka?',e:'That might be true. Should I take medicine?'},
+    {s:'A',j:'はい！くすりを のんで、はやく ねてください。けんこうの ほうが たいせつです。',r:'Hai! Kusuri o nonde, hayaku nete kudasai. Kenkou no ho ga taisetsu desu.',e:'Yes! Take medicine and sleep early. Your health is more important.'},
+    {s:'B',j:'ありがとうございます。おだいじに！',r:'Arigato gozaimasu. Odaiji ni!',e:'Thank you. Get well soon!'},
+    {s:'A',j:'おだいじに！',r:'Odaiji ni!',e:'Get well soon!'}
+  ]
 }
 };
 const SURV=[
@@ -859,7 +1007,7 @@ function openLesson(n){
   const l=LESSONS[n-1];
   document.getElementById('lhd-n').textContent='Lesson '+n;
   document.getElementById('lhd-t').textContent=l.t;
-  const tabs=[{id:'grammar',lbl:'Grammar'},{id:'vocab',lbl:'Vocabulary'},{id:'exercises',lbl:'Exercises'},{id:'speak',lbl:'Speaking'}];
+  const tabs=[{id:'grammar',lbl:'Grammar'},{id:'vocab',lbl:'Vocabulary'},{id:'exercises',lbl:'Exercises'},{id:'speak',lbl:'Speaking'},{id:'dialogue',lbl:'Dialogue 🗣'}];
   const te=document.getElementById('ltabs');
   te.innerHTML='';
   tabs.forEach((t,i)=>{
@@ -882,6 +1030,7 @@ function renderTab(n,tab){
   else if(tab==='vocab') renderV(n,data,el);
   else if(tab==='exercises') renderE(n,data,el);
   else if(tab==='speak') renderSp(n,data,el);
+  else if(tab==='dialogue') renderD(n,data,el);
 }
 
 function renderG(n,data,el){
@@ -1115,6 +1264,71 @@ function showKFCard(){
 
 function flipKFC(){if(S.kFl)return;S.kFl=true;document.getElementById('kfc-r').style.display='block';document.getElementById('kfc-h').textContent='';speak(S.kQ[S.kI].k);}
 function markKana(ok){if(ok)S.kStr++;else S.kStr=0;document.getElementById('kstr').textContent=S.kStr;S.kI++;showKFCard();}
+
+
+function renderD(n,data,el){
+  const lines=data.d||[];
+  if(!lines.length){el.innerHTML='<div style="padding:1rem;color:var(--i40)">Dialogue coming soon!</div>';return;}
+  const wrap=document.createElement('div');wrap.className='dial-wrap';
+  
+  const controls=document.createElement('div');controls.className='dial-controls';
+  const topic=document.createElement('div');topic.className='dial-topic';topic.textContent='Lesson '+n+' Dialogue';
+  const showAll=document.createElement('button');showAll.className='dial-showall';showAll.textContent='Show all translations';
+  let allShown=false;
+  showAll.onclick=()=>{
+    allShown=!allShown;
+    wrap.querySelectorAll('.dial-bubble').forEach(b=>allShown?b.classList.add('show'):b.classList.remove('show'));
+    showAll.textContent=allShown?'Hide translations':'Show all translations';
+  };
+  controls.appendChild(topic);controls.appendChild(showAll);
+  el.appendChild(controls);
+
+  const playBtn=document.createElement('button');playBtn.className='dial-play';playBtn.textContent='▶ Play full conversation';
+  let playing=false;
+  playBtn.onclick=()=>{
+    if(playing){speechSynthesis.cancel();playing=false;playBtn.textContent='▶ Play full conversation';playBtn.disabled=false;return;}
+    playing=true;playBtn.textContent='⏹ Stop';
+    let i=0;
+    function playNext(){
+      if(i>=lines.length||!playing){playing=false;playBtn.textContent='▶ Play full conversation';playBtn.disabled=false;return;}
+      const line=lines[i];
+      // Highlight current line
+      wrap.querySelectorAll('.dial-line').forEach((l,idx)=>l.style.opacity=idx===i?'1':'.45');
+      speak(line.j);
+      i++;
+      // Estimate duration: ~60ms per character for Japanese
+      const dur=Math.max(1200,line.j.length*80);
+      setTimeout(playNext,dur);
+    }
+    playNext();
+  };
+  el.appendChild(playBtn);
+
+  lines.forEach((line,i)=>{
+    const row=document.createElement('div');
+    row.className='dial-line speaker-'+(line.s==='A'?'a':'b');
+    
+    const av=document.createElement('div');av.className='dial-av';av.textContent=line.s;
+    
+    const bubble=document.createElement('div');bubble.className='dial-bubble';
+    
+    const jp=document.createElement('div');jp.className='dial-j';jp.textContent=line.j;
+    const rom=document.createElement('div');rom.className='dial-r';rom.textContent=line.r;
+    const eng=document.createElement('div');eng.className='dial-e';eng.textContent=line.e;
+    
+    const actions=document.createElement('div');actions.className='dial-actions';
+    const spkBtn=document.createElement('button');spkBtn.className='spk';spkBtn.title='Listen';spkBtn.textContent='🔊';
+    spkBtn.onclick=()=>speak(line.j);
+    const togBtn=document.createElement('button');togBtn.className='dial-toggle';togBtn.textContent='translation';
+    togBtn.onclick=()=>bubble.classList.toggle('show');
+    actions.appendChild(spkBtn);actions.appendChild(togBtn);
+    
+    bubble.appendChild(jp);bubble.appendChild(rom);bubble.appendChild(eng);bubble.appendChild(actions);
+    row.appendChild(av);row.appendChild(bubble);
+    wrap.appendChild(row);
+  });
+  el.appendChild(wrap);
+}
 
 function buildSurv(){
   const el=document.getElementById('scats');el.innerHTML='';
