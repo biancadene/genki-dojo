@@ -1289,30 +1289,23 @@ function renderD(n,data,el){
     if(playing){speechSynthesis.cancel();playing=false;playBtn.textContent='▶ Play full conversation';return;}
     if(!('speechSynthesis' in window))return;
     playing=true;playBtn.textContent='⏹ Stop';
-    let i=0;
-    function playNext(){
-      if(i>=lines.length||!playing){
-        playing=false;playBtn.textContent='▶ Play full conversation';
-        wrap.querySelectorAll('.dial-line').forEach(l=>l.style.opacity='1');
-        return;
-      }
-      const line=lines[i];
-      wrap.querySelectorAll('.dial-line').forEach((l,idx)=>l.style.opacity=idx===i?'1':'.45');
-      i++;
+    // Queue all utterances upfront — required for Safari gesture policy
+    speechSynthesis.cancel();
+    lines.forEach((line,idx)=>{
       const u=new SpeechSynthesisUtterance(line.j);
       u.lang='ja-JP';u.rate=0.85;
-      u.onend=()=>{if(playing)setTimeout(playNext,400);};
-      u.onerror=()=>{if(playing)setTimeout(playNext,800);};
+      u.onstart=()=>{
+        if(!playing){speechSynthesis.cancel();return;}
+        wrap.querySelectorAll('.dial-line').forEach((l,li)=>l.style.opacity=li===idx?'1':'.45');
+      };
+      u.onend=()=>{
+        if(idx===lines.length-1){
+          playing=false;playBtn.textContent='▶ Play full conversation';
+          wrap.querySelectorAll('.dial-line').forEach(l=>l.style.opacity='1');
+        }
+      };
       speechSynthesis.speak(u);
-    }
-    speechSynthesis.cancel();
-    setTimeout(()=>{
-      const primer=new SpeechSynthesisUtterance('​');
-      primer.volume=0.01;primer.lang='ja-JP';
-      primer.onend=()=>setTimeout(playNext,150);
-      primer.onerror=()=>setTimeout(playNext,150);
-      speechSynthesis.speak(primer);
-    },100);
+    });
   };
   el.appendChild(playBtn);
 
