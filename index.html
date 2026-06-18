@@ -1289,6 +1289,9 @@ function renderD(n,data,el){
     if(playing){speechSynthesis.cancel();playing=false;playBtn.textContent='▶ Play full conversation';playBtn.disabled=false;return;}
     playing=true;playBtn.textContent='⏹ Stop';
     let i=0;
+    function startPlay(jpVoices){
+    const voiceA=jpVoices[0]||null;
+    const voiceB=jpVoices.find(v=>v!==voiceA)||null;
     function playNext(){
       if(i>=lines.length||!playing){
         playing=false;playBtn.textContent='▶ Play full conversation';
@@ -1302,11 +1305,22 @@ function renderD(n,data,el){
       speechSynthesis.cancel();
       const u=new SpeechSynthesisUtterance(line.j);
       u.lang='ja-JP';u.rate=0.85;
+      if(line.s==='A'){
+        if(voiceA)u.voice=voiceA;
+        u.pitch=voiceB?1.0:1.2;
+      } else {
+        if(voiceB)u.voice=voiceB;
+        u.pitch=voiceB?1.0:0.75;
+      }
       u.onend=()=>{if(playing)setTimeout(playNext,420);};
       u.onerror=()=>{if(playing)setTimeout(playNext,800);};
       speechSynthesis.speak(u);
     }
     playNext();
+    } // end startPlay
+    const v=speechSynthesis.getVoices().filter(v=>v.lang.startsWith('ja'));
+    if(v.length){startPlay(v);}
+    else{speechSynthesis.onvoiceschanged=()=>startPlay(speechSynthesis.getVoices().filter(v=>v.lang.startsWith('ja')));}
   };
   el.appendChild(playBtn);
 
