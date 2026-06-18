@@ -1302,7 +1302,6 @@ function renderD(n,data,el){
       wrap.querySelectorAll('.dial-line').forEach((l,idx)=>l.style.opacity=idx===i?'1':'.45');
       i++;
       if(!('speechSynthesis' in window))return;
-      speechSynthesis.cancel();
       const u=new SpeechSynthesisUtterance(line.j);
       u.lang='ja-JP';u.rate=0.85;
       if(line.s==='A'){
@@ -1320,7 +1319,7 @@ function renderD(n,data,el){
     } // end startPlay
     const v=speechSynthesis.getVoices().filter(v=>v.lang.startsWith('ja'));
     if(v.length){startPlay(v);}
-    else{speechSynthesis.onvoiceschanged=()=>startPlay(speechSynthesis.getVoices().filter(v=>v.lang.startsWith('ja')));}
+    else{speechSynthesis.onvoiceschanged=()=>{speechSynthesis.onvoiceschanged=null;startPlay(speechSynthesis.getVoices().filter(v=>v.lang.startsWith('ja')));};}
   };
   el.appendChild(playBtn);
 
