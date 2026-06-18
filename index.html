@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  
-  <head>
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Genki Dojo</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Noto+Sans+JP:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  /* Sakura x Dojo theme */
   --red:#F6C1CC;--red2:#FF8FAB;--rbg:rgba(255,143,171,.12);--rln:rgba(255,143,171,.24);
   --blue:#7EE7C1;--blue2:#5FD6AE;--bbg:rgba(126,231,193,.10);--bln:rgba(126,231,193,.22);
   --yel:#FFD58A;--yel2:#F2A93B;--ybg:rgba(242,169,59,.10);--yln:rgba(242,169,59,.22);
@@ -25,17 +23,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;background-im
 .screen{display:none;min-height:100vh;animation:fu .2s ease both}
 .screen.active{display:block}
 @keyframes fu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-
-/* HOME */
-.hero{background:
-radial-gradient(circle at 18% 24%,var(--sakura-glow),transparent 32%),
-radial-gradient(circle at 85% 18%,rgba(126,231,193,.08),transparent 28%),
-linear-gradient(180deg,#09090d 0%, #0d0d13 100%);
-padding:4.5rem 2rem 3.25rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:
-repeating-linear-gradient(transparent,transparent 27px,rgba(255,255,255,.02) 27px,rgba(255,255,255,.02) 28px),
-linear-gradient(90deg,transparent 0 8%, rgba(255,255,255,.025) 8% 8.1%, transparent 8.1% 100%);
-pointer-events:none}
+.hero{background:radial-gradient(circle at 18% 24%,var(--sakura-glow),transparent 32%),radial-gradient(circle at 85% 18%,rgba(126,231,193,.08),transparent 28%),linear-gradient(180deg,#09090d 0%, #0d0d13 100%);padding:4.5rem 2rem 3.25rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(transparent,transparent 27px,rgba(255,255,255,.02) 27px,rgba(255,255,255,.02) 28px),linear-gradient(90deg,transparent 0 8%, rgba(255,255,255,.025) 8% 8.1%, transparent 8.1% 100%);pointer-events:none}
 .hero::after{content:'';position:absolute;top:0;left:40px;bottom:0;width:4px;background:linear-gradient(to bottom,transparent,var(--grn2),var(--red2),transparent);opacity:.72;box-shadow:0 0 24px rgba(255,143,171,.16)}
 .hero .orb{position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}
 .hero .orb.o1{right:-70px;top:-30px;width:220px;height:220px;background:radial-gradient(circle,var(--sakura-glow),transparent 68%);opacity:.9}
@@ -73,24 +62,20 @@ pointer-events:none}
 .app-name{font-family:'DM Sans',sans-serif;color:#fff;font-size:2.35rem;font-weight:700;line-height:1.05;margin-bottom:4px;letter-spacing:-.03em}
 .app-sub{font-size:.76rem;color:rgba(255,255,255,.42);letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.35rem}
 .tagline{font-size:.98rem;color:rgba(255,255,255,.62);line-height:1.7;border-left:2px solid var(--red2);padding-left:14px;max-width:460px}
-
 .prog-strip{background:#111116;border-bottom:1px solid var(--i15);padding:1rem 2rem;display:flex;align-items:center;gap:14px}
 .pg-lbl{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--i40);white-space:nowrap}
 .pg-track{flex:1;height:4px;background:var(--p3);border-radius:10px;overflow:hidden}
 .pg-bar{height:100%;background:var(--red);border-radius:10px;transition:width .6s ease}
 .pg-pct{font-size:.8rem;font-weight:700;color:var(--red);min-width:36px;text-align:right}
-
 .legend{background:#111116;border-bottom:1px solid var(--i15);padding:.85rem 2rem;display:flex;gap:16px;overflow-x:auto;scrollbar-width:none}
 .legend::-webkit-scrollbar{display:none}
 .li{display:flex;align-items:center;gap:5px;white-space:nowrap}
 .ld{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .lt{font-size:.65rem;color:var(--i40);font-weight:500}
-
 .sec-head{padding:2rem 2rem 1rem;display:flex;align-items:center;gap:12px}
 .stamp{width:32px;height:32px;border:2px solid var(--red2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--red2);flex-shrink:0;box-shadow:0 0 0 4px rgba(255,143,171,.08)}
 .sec-title{font-family:'DM Sans',sans-serif;font-size:1.06rem;font-weight:700;color:var(--ink);letter-spacing:.01em}
 .sec-line{flex:1;height:1px;background:linear-gradient(to right,rgba(255,143,171,.22),rgba(255,255,255,.03))}
-
 .lgrid{padding:0 2rem 2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .lcard{background:rgba(255,255,255,.03);border:1px solid rgba(255,143,171,.14);border-radius:20px;padding:1.15rem;cursor:pointer;transition:transform .22s,box-shadow .22s,border-color .22s;position:relative;overflow:hidden;backdrop-filter:blur(6px)}
 .lcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .2s}
@@ -105,7 +90,6 @@ pointer-events:none}
 .lc-tag{font-size:.58rem;padding:1px 5px;border-radius:2px;background:var(--p3);color:var(--i40);border:1px solid var(--i15)}
 .lc-chk{position:absolute;top:8px;right:8px;width:16px;height:16px;background:var(--grn2);border-radius:50%;display:none;align-items:center;justify-content:center;color:#fff;font-size:8px;font-weight:700}
 .lcard.done .lc-chk{display:flex}
-
 .qlinks{padding:0 2rem 2.25rem;display:grid;gap:12px}
 .ql{border-radius:20px;padding:1.2rem 1.3rem;cursor:pointer;display:flex;align-items:center;gap:14px;transition:transform .2s,box-shadow .2s,border-color .2s}
 .ql:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(0,0,0,.4)}
@@ -126,8 +110,6 @@ pointer-events:none}
 .qa{font-size:1rem}
 .ql-s .qa{color:rgba(255,255,255,.25)}
 .ql-h .qa,.ql-k .qa{color:var(--i40)}
-
-/* LESSON */
 .lhd{background:#111;border-bottom:1px solid var(--i15);padding:.85rem 1.25rem;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:20}
 .back{width:34px;height:34px;border:1px solid var(--i15);border-radius:4px;background:none;cursor:pointer;font-size:.9rem;display:flex;align-items:center;justify-content:center;color:var(--ink);transition:background .15s;font-family:var(--fb)}
 .back:hover{background:var(--p3)}
@@ -142,8 +124,6 @@ pointer-events:none}
 .ltab[data-t="exercises"].on{color:var(--grn2);border-bottom-color:var(--grn2)}
 .ltab[data-t="speak"].on{color:var(--yel2);border-bottom-color:var(--yel2)}
 .lcon{padding:1.5rem 2rem 2.5rem;max-width:1100px;margin:0 auto}
-
-/* Grammar */
 .gp{background:rgba(255,255,255,.03);border:1px solid rgba(255,143,171,.10);border-left:3px solid var(--red2);border-radius:0 8px 8px 0;padding:1rem 1.1rem;margin-bottom:.75rem}
 .gp-n{font-family:'DM Sans',sans-serif;font-size:1.1rem;color:var(--red);font-weight:700;margin-bottom:2px}
 .gp-m{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--i40);margin-bottom:10px}
@@ -155,8 +135,6 @@ pointer-events:none}
 .gref-row{padding:8px 1.1rem;border-bottom:1px solid var(--i15);font-size:.82rem;color:var(--i70);line-height:1.6}
 .gref-row:last-child{border-bottom:none}
 .gref-row strong{color:var(--red);font-weight:600}
-
-/* Vocab */
 .vfc{background:var(--w);border:1px solid var(--bln);border-top:3px solid var(--blue);border-radius:0 0 14px 14px;padding:1.75rem 1.5rem;text-align:center;cursor:pointer;margin-bottom:.75rem;min-height:140px;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:box-shadow .18s;user-select:none}
 .vfc:hover{box-shadow:0 4px 20px rgba(0,0,0,.3)}
 .vfc-main{font-size:2rem;color:var(--ink);margin-bottom:4px}
@@ -176,8 +154,6 @@ pointer-events:none}
 .vr-j{font-size:.95rem;color:var(--ink)}
 .vr-r{font-size:.68rem;color:var(--i40);margin-top:1px}
 .vr-e{font-size:.78rem;color:var(--i70);text-align:right}
-
-/* Exercises */
 .ex-sr{display:flex;gap:8px;margin-bottom:.85rem}
 .est{flex:1;background:var(--w);border:1px solid var(--i15);border-radius:8px;padding:9px;text-align:center}
 .est-n{font-size:1.3rem;font-weight:700;color:var(--ink)}
@@ -206,8 +182,6 @@ pointer-events:none}
 .fb.bad{background:rgba(224,74,74,.1);color:#E04A4A}
 .nq{width:100%;padding:12px;background:var(--p3);color:var(--ink);border:1px solid var(--i15);border-radius:14px;font-size:.88rem;font-family:var(--fb);font-weight:600;cursor:pointer;transition:all .15s;margin-top:4px}
 .nq:hover{background:var(--red);color:#fff;border-color:var(--red)}
-
-/* Speaking */
 .spbox{background:rgba(255,255,255,.03);border:1px solid var(--yln);border-top:3px solid var(--yel2);border-radius:0 0 14px 14px;padding:1.75rem 1.5rem 1.25rem;text-align:center;margin-bottom:.75rem}
 .sp-j{font-size:1.4rem;color:var(--ink);margin-bottom:4px}
 .sp-r{font-size:.78rem;color:var(--yel2);margin-bottom:3px}
@@ -227,8 +201,6 @@ pointer-events:none}
 .pr-j{font-size:.95rem;color:var(--ink)}
 .pr-r{font-size:.68rem;color:var(--i40);margin-top:1px}
 .pr-e{font-size:.75rem;color:var(--i70);margin-top:1px}
-
-/* Kana */
 .kts{display:flex;background:#111;border-bottom:1px solid var(--i15);padding:0 1.25rem}
 .ktsb{padding:.85rem 1.25rem;font-size:.82rem;font-weight:600;font-family:var(--fb);border:none;background:none;cursor:pointer;color:var(--i40);border-bottom:2px solid transparent;transition:all .15s}
 .ktsb.h.on{color:var(--red);border-bottom-color:var(--red)}
@@ -257,8 +229,6 @@ pointer-events:none}
 .startfc:hover{background:var(--red2)}
 .bkchart{width:100%;padding:10px;background:var(--p2);color:var(--i70);border:1px solid var(--i15);border-radius:8px;font-size:.82rem;font-family:var(--fb);cursor:pointer;transition:background .15s}
 .bkchart:hover{background:var(--p3)}
-
-/* Survival */
 .surv-hero{background:#080808;padding:2rem 1.5rem 1.75rem;position:relative;overflow:hidden}
 .surv-hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.015) 39px,rgba(255,255,255,.015) 40px)}
 .sh-in{position:relative;z-index:1}
@@ -285,84 +255,22 @@ pointer-events:none}
 .sph-r{font-size:.72rem;color:var(--i40)}
 .sph-e{font-size:.78rem;color:var(--i70);margin-top:3px}
 .slr{font-size:.85rem;color:var(--i70);text-align:center;padding:1rem;min-height:50px}
-
 .slbl{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--i40);margin-bottom:7px}
 .bg{display:inline-block;padding:2px 7px;border-radius:3px;font-size:.65rem;font-weight:700;background:var(--gbg);color:var(--grn2)}
 .ba{display:inline-block;padding:2px 7px;border-radius:3px;font-size:.65rem;font-weight:700;background:var(--ybg);color:var(--yel2)}
-
 .graphic-panel{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,143,171,.16);border-radius:24px;padding:1.4rem;margin:0 2rem 1.2rem;position:relative;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.28)}
 .graphic-panel::before{content:'';position:absolute;inset:auto -60px -60px auto;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,143,171,.16),transparent 70%)}
 .graphic-panel::after{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(to bottom,var(--grn2),var(--red2))}
-.graphic-title{font-family:'DM Sans',sans-serif;font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red2);margin-bottom:.8rem;padding-left:.9rem}
-.graphic-grid{display:grid;grid-template-columns:1.25fr .95fr;gap:1rem;align-items:stretch}
-.graphic-copy{padding:.6rem .9rem .7rem 1rem;position:relative;z-index:1}
-.graphic-copy h1{font-family:'DM Sans',sans-serif;font-size:2.3rem;line-height:1.02;color:#fff;margin-bottom:.85rem}
-.graphic-copy h1 .accent{color:var(--red2)}
-.graphic-copy p{color:rgba(255,255,255,.66);font-size:.92rem;line-height:1.7;max-width:40ch}
-.graphic-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
-.graphic-tags span{font-size:.68rem;padding:.35rem .58rem;border-radius:999px;border:1px solid rgba(255,143,171,.18);background:rgba(255,255,255,.04);color:var(--ink)}
-.graphic-preview{position:relative;border-radius:22px;min-height:220px;background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(126,231,193,.14);overflow:hidden}
-.graphic-preview .device{position:absolute;right:18px;bottom:18px;width:200px;height:150px;border-radius:20px;background:linear-gradient(180deg,#1b1b25,#111117);border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 40px rgba(0,0,0,.35)}
-.graphic-preview .device::before{content:'';position:absolute;left:16px;right:16px;top:18px;height:10px;border-radius:999px;background:linear-gradient(to right,var(--red2),rgba(255,255,255,.15))}
-.graphic-preview .device::after{content:'あ  ア  日本語';position:absolute;left:18px;bottom:22px;color:rgba(255,255,255,.76);font-size:1.35rem;letter-spacing:.16em}
-.graphic-preview .petal{position:absolute;color:rgba(255,193,204,.82);font-size:1.2rem;filter:drop-shadow(0 0 10px rgba(255,143,171,.18))}
-.graphic-preview .p1{left:18px;top:22px}
-.graphic-preview .p2{right:80px;top:28px}
-.graphic-preview .p3{left:72px;bottom:28px}
-@media(max-width:820px){.graphic-grid{grid-template-columns:1fr}.graphic-copy h1{font-size:1.9rem}.graphic-panel{margin:0 1.25rem 1rem}}
-
 .hidden{display:none!important}
 @media(min-width:640px){.lgrid{grid-template-columns:repeat(3,1fr)}.qlinks{grid-template-columns:1fr 1fr}.ql-s{grid-column:1/-1}}
 @media(min-width:1100px){.hero{padding:5rem 3.5rem 3.5rem}.prog-strip,.legend,.sec-head,.lgrid,.qlinks{padding-left:3.5rem;padding-right:3.5rem}}
-@media(max-width:560px){.hero{padding:3.6rem 1.25rem 2.5rem}.hero-grid{gap:1rem}.hi{padding-left:86px}.logo{width:58px;height:58px;font-size:1.6rem}.app-name{font-size:1.78rem}.tagline{font-size:.9rem}.hero-actions{gap:.55rem}.hero-btn{min-width:0;flex:1}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:1rem}.hero-visual,.hero-card{display:none !important}.hi{padding-left:94px;max-width:none}.app-name{font-size:2rem}}
+@media(max-width:700px){.lgrid{grid-template-columns:1fr}.hero-actions{flex-direction:column}.hero-btn{width:100%}.prog-strip,.legend,.sec-head,.lgrid,.qlinks,.lcon{padding-left:1.1rem;padding-right:1.1rem}.kcon,.sph-con,.scats{padding-left:1rem;padding-right:1rem}}
+@media(max-width:560px){.hero{padding:3.4rem 1rem 2.4rem}.hero .orb{display:none}.logo{width:58px;height:58px;font-size:1.6rem;border-radius:14px}.hi{padding-left:82px}.app-name{font-size:1.78rem}.tagline{font-size:.92rem;max-width:none}.ql{padding:1rem 1rem}.lcard{border-radius:18px}}
 @media(max-width:360px){.lgrid{grid-template-columns:1fr}}
-
 html{scroll-behavior:smooth}
 button{-webkit-tap-highlight-color:transparent}
 .hero-btn,.startfc,.bkchart,.chk,.fcb,.optb,.back,.ql,.lcard,.kcell,.micbtn,.sph-mic{touch-action:manipulation}
-
-@media(max-width:900px){
-  .hero-grid{
-    grid-template-columns:1fr;
-    gap:1rem;
-  }
-
-  .hero-visual,
-  .hero-card{
-    display:none !important;
-  }
-
-  .hi{
-    padding-left:94px;
-    max-width:none;
-  }
-
-  .app-name{
-    font-size:2rem;
-  }
-}
-
-@media(max-width:700px){
-  .lgrid{grid-template-columns:1fr}
-  .hero-actions{flex-direction:column}
-  .hero-btn{width:100%}
-  .prog-strip,.legend,.sec-head,.lgrid,.qlinks,.lcon{padding-left:1.1rem;padding-right:1.1rem}
-  .kcon,.sph-con,.scats{padding-left:1rem;padding-right:1rem}
-}
-
-@media(max-width:560px){
-  .hero{padding:3.4rem 1rem 2.4rem}
-  .hero .orb{display:none}
-  .logo{width:58px;height:58px;font-size:1.6rem;border-radius:14px}
-  .hi{padding-left:82px}
-  .app-name{font-size:1.78rem}
-  .tagline{font-size:.92rem;max-width:none}
-  .hero-jp{font-size:1.2rem;right:12px;bottom:12px}
-  .ql{padding:1rem 1rem}
-  .lcard{border-radius:18px}
-}
-
-
 .gp{cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s}
 .gp:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.24);border-color:rgba(255,143,171,.22)}
 .gp-act{margin-top:.8rem;font-size:.72rem;color:var(--red2);font-weight:700;letter-spacing:.04em}
@@ -371,104 +279,81 @@ button{-webkit-tap-highlight-color:transparent}
 .ex-clear{padding:.45rem .7rem;border-radius:999px;border:1px solid rgba(255,143,171,.18);background:rgba(255,255,255,.04);color:var(--ink);font-size:.72rem;font-weight:700;cursor:pointer}
 .ex-clear:hover{background:rgba(255,255,255,.08)}
 .spk{background:none;border:none;cursor:pointer;font-size:.95rem;padding:3px 6px;border-radius:6px;color:var(--i40);transition:color .15s,background .15s;line-height:1;flex-shrink:0}
-.spk:hover{color:var(--ink);background:var(--p3)} .vlist-sub{padding:7px 1.1rem;background:rgba(255,255,255,.02);border-bottom:1px solid var(--i15);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--i40)}
+.spk:hover{color:var(--ink);background:var(--p3)}
+.vlist-sub{padding:7px 1.1rem;background:rgba(255,255,255,.02);border-bottom:1px solid var(--i15);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--i40)}
 </style>
-
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0F0F14">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Genki Dojo">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
-
 </head>
 <body>
 <!-- HOME -->
 <div class="screen active" id="home">
 <div class="hero">
-    <div class="hero-grid">
-      <div class="hi">
-        <div class="logo">元</div>
-        <div class="hero-topline"><span class="dot"></span> free japanese study experience</div>
-        <div class="app-name">Genki Dojo</div>
-        <div class="app-sub">元気道場</div>
-        <div class="tagline">All 12 lessons of Genki I.<br>Grammar, vocabulary, kana, and speaking practice in one calm study space.</div>
-        <div class="hero-actions">
-          <button class="hero-btn primary" onclick="openLesson(1)">Start studying</button>
-          <button class="hero-btn secondary" onclick="goKana('h')">Practice kana</button>
-          <button class="hero-btn secondary" id="installBtn" style="display:none">Install app</button>
-        </div>
-        <div class="hero-metrics">
-          <span>12 lessons</span>
-          <span>46 hiragana</span>
-          <span>46 katakana</span>
-          <span>Travel phrases</span>
-        </div>
+  <div class="hero-grid">
+    <div class="hi">
+      <div class="logo">元</div>
+      <div class="hero-topline"><span class="dot"></span> free japanese study experience</div>
+      <div class="app-name">Genki Dojo</div>
+      <div class="app-sub">元気道場</div>
+      <div class="tagline">All 12 lessons of Genki I.<br>Grammar, vocabulary, kana, and speaking practice in one calm study space.</div>
+      <div class="hero-actions">
+        <button class="hero-btn primary" onclick="openLesson(1)">Start studying</button>
+        <button class="hero-btn secondary" onclick="goKana('h')">Practice kana</button>
+        <button class="hero-btn secondary" id="installBtn" style="display:none">Install app</button>
       </div>
-      <div class="hero-visual">
-        <div class="hero-card">
-          <div class="hero-card-inner">
-            <div class="hero-card-label">Study preview</div>
-            <div class="hero-card-ui">
-              <div class="hero-ui-bar"></div>
-              <div class="hero-ui-title">One app. Everything you need.</div>
-              <div class="hero-ui-copy">Grammar, vocabulary, kana drills, speaking practice, and survival Japanese designed to feel clear, focused, and encouraging.</div>
-              <div class="hero-ui-chips">
-                <span>Grammar</span><span>Vocab</span><span>Speaking</span><span>Kana</span>
-              </div>
-              <div class="hero-jp">日本</div>
-              <div class="hero-petal p1">✿</div>
-              <div class="hero-petal p2">✿</div>
-              <div class="hero-petal p3">✿</div>
-            </div>
+      <div class="hero-metrics">
+        <span>12 lessons</span><span>46 hiragana</span><span>46 katakana</span><span>Travel phrases</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-inner">
+          <div class="hero-card-label">Study preview</div>
+          <div class="hero-card-ui">
+            <div class="hero-ui-bar"></div>
+            <div class="hero-ui-title">One app. Everything you need.</div>
+            <div class="hero-ui-copy">Grammar, vocabulary, kana drills, speaking practice, and survival Japanese designed to feel clear, focused, and encouraging.</div>
+            <div class="hero-ui-chips"><span>Grammar</span><span>Vocab</span><span>Speaking</span><span>Kana</span></div>
+            <div class="hero-jp">日本</div>
+            <div class="hero-petal p1">✿</div><div class="hero-petal p2">✿</div><div class="hero-petal p3">✿</div>
           </div>
         </div>
       </div>
     </div>
-    <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
   </div>
-  <div class="prog-strip">
-<div class="pg-lbl">Progress</div>
-<div class="pg-track"><div class="pg-bar" id="pgbar" style="width:0%"></div></div>
-<div class="pg-pct" id="pgpct">0%</div>
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+</div>
+<div class="prog-strip">
+  <div class="pg-lbl">Progress</div>
+  <div class="pg-track"><div class="pg-bar" id="pgbar" style="width:0%"></div></div>
+  <div class="pg-pct" id="pgpct">0%</div>
 </div>
 <div class="legend">
-<div class="li"><div class="ld" style="background:var(--red)"></div><span class="lt">Grammar</span></div>
-<div class="li"><div class="ld" style="background:var(--blue)"></div><span class="lt">Vocabulary</span></div>
-<div class="li"><div class="ld" style="background:var(--grn2)"></div><span class="lt">Exercises</span></div>
-<div class="li"><div class="ld" style="background:var(--yel2)"></div><span class="lt">Speaking</span></div>
-<div class="li"><div class="ld" style="background:var(--ink)"></div><span class="lt">Structure</span></div>
+  <div class="li"><div class="ld" style="background:var(--red)"></div><span class="lt">Grammar</span></div>
+  <div class="li"><div class="ld" style="background:var(--blue)"></div><span class="lt">Vocabulary</span></div>
+  <div class="li"><div class="ld" style="background:var(--grn2)"></div><span class="lt">Exercises</span></div>
+  <div class="li"><div class="ld" style="background:var(--yel2)"></div><span class="lt">Speaking</span></div>
+  <div class="li"><div class="ld" style="background:var(--ink)"></div><span class="lt">Structure</span></div>
 </div>
 <div class="sec-head"><div class="stamp">12</div><div class="sec-title">Lessons</div><div class="sec-line"></div></div>
 <div class="lgrid" id="lgrid"></div>
 <div class="sec-head"><div class="stamp">+</div><div class="sec-title">Study Tools</div><div class="sec-line"></div></div>
 <div class="qlinks">
-<div class="ql ql-s" onclick="goTo('surv')">
-<div class="qi">🗾</div>
-<div class="qinfo"><div class="qn">Survival Japanese</div><div class="qd">100+ real phrases for your Japan trip</div></div>
-<div class="qa">→</div>
-</div>
-<div class="ql ql-h" onclick="goKana('h')">
-<div class="qi" style="font-size:1.3rem">あ</div>
-<div class="qinfo"><div class="qn">Hiragana</div><div class="qd">46 characters</div></div>
-<div class="qa" style="color:var(--red)">→</div>
-</div>
-<div class="ql ql-k" onclick="goKana('k')">
-<div class="qi" style="font-size:1.3rem">ア</div>
-<div class="qinfo"><div class="qn">Katakana</div><div class="qd">46 characters</div></div>
-<div class="qa" style="color:var(--blue)">→</div>
-</div>
+  <div class="ql ql-s" onclick="goTo('surv')"><div class="qi">🗾</div><div class="qinfo"><div class="qn">Survival Japanese</div><div class="qd">100+ real phrases for your Japan trip</div></div><div class="qa">→</div></div>
+  <div class="ql ql-h" onclick="goKana('h')"><div class="qi" style="font-size:1.3rem">あ</div><div class="qinfo"><div class="qn">Hiragana</div><div class="qd">46 characters</div></div><div class="qa" style="color:var(--red)">→</div></div>
+  <div class="ql ql-k" onclick="goKana('k')"><div class="qi" style="font-size:1.3rem">ア</div><div class="qinfo"><div class="qn">Katakana</div><div class="qd">46 characters</div></div><div class="qa" style="color:var(--blue)">→</div></div>
 </div>
 <div style="height:1.5rem"></div>
 </div>
 <!-- LESSON -->
 <div class="screen" id="lesson">
 <div class="lhd">
-<button class="back" onclick="goTo('home')">←</button>
-<div class="lhd-info">
-<div class="lhd-n" id="lhd-n">Lesson 1</div>
-<div class="lhd-t" id="lhd-t">New Friends</div>
-</div>
+  <button class="back" onclick="goTo('home')">←</button>
+  <div class="lhd-info"><div class="lhd-n" id="lhd-n">Lesson 1</div><div class="lhd-t" id="lhd-t">New Friends</div></div>
 </div>
 <div class="ltabs" id="ltabs"></div>
 <div class="lcon" id="lcon"></div>
@@ -476,52 +361,49 @@ button{-webkit-tap-highlight-color:transparent}
 <!-- KANA -->
 <div class="screen" id="kana">
 <div class="lhd">
-<button class="back" onclick="goTo('home')">←</button>
-<div class="lhd-info">
-<div class="lhd-n">Writing System</div>
-<div class="lhd-t" id="kana-title">Hiragana</div>
-</div>
+  <button class="back" onclick="goTo('home')">←</button>
+  <div class="lhd-info"><div class="lhd-n">Writing System</div><div class="lhd-t" id="kana-title">Hiragana</div></div>
 </div>
 <div class="kts">
-<button class="ktsb h on" id="kts-h" onclick="goKana('h')">Hiragana あ</button>
-<button class="ktsb k" id="kts-k" onclick="goKana('k')">Katakana ア</button>
+  <button class="ktsb h on" id="kts-h" onclick="goKana('h')">Hiragana あ</button>
+  <button class="ktsb k" id="kts-k" onclick="goKana('k')">Katakana ア</button>
 </div>
 <div class="kcon">
-<div class="ksr">
-<div class="kst"><div class="kst-n" id="klrn">0</div><div class="kst-l">Learned</div></div>
-<div class="kst"><div class="kst-n" id="kstr">0</div><div class="kst-l">Streak</div></div>
-<div class="kst"><div class="kst-n">46</div><div class="kst-l">Total</div></div>
-</div>
-<div class="tipnote">Tap any character to mark it learned (turns green). Press <strong>Practice flashcards</strong> to drill!</div>
-<div id="kgv">
-<div class="kgrid" id="kgrid"></div>
-<button class="startfc" onclick="startKFC()">Practice flashcards →</button>
-</div>
-<div class="hidden" id="kfv">
-<div class="kpbw"><div class="kpb" id="kpb" style="width:0%"></div></div>
-<div class="kfc" onclick="flipKFC()">
-<div class="kfc-c" id="kfc-c">あ</div>
-<div class="kfc-r" id="kfc-r">a</div>
-<div class="kfc-h" id="kfc-h">tap to reveal</div>
-</div>
-<div class="fcc" style="margin-bottom:.6rem">
-<button class="fcb again" onclick="markKana(false)">Again</button>
-<button class="fcb flip" onclick="flipKFC()">Reveal</button>
-<button class="fcb good" onclick="markKana(true)">Got it ✓</button>
-</div>
-<button class="bkchart" onclick="showKG()">← Back to chart</button>
-</div>
+  <div class="ksr">
+    <div class="kst"><div class="kst-n" id="klrn">0</div><div class="kst-l">Learned</div></div>
+    <div class="kst"><div class="kst-n" id="kstr">0</div><div class="kst-l">Streak</div></div>
+    <div class="kst"><div class="kst-n">46</div><div class="kst-l">Total</div></div>
+  </div>
+  <div class="tipnote">Tap any character to mark it learned (turns green). Press <strong>Practice flashcards</strong> to drill!</div>
+  <div id="kgv">
+    <div class="kgrid" id="kgrid"></div>
+    <button class="startfc" onclick="startKFC()">Practice flashcards →</button>
+  </div>
+  <div class="hidden" id="kfv">
+    <div class="kpbw"><div class="kpb" id="kpb" style="width:0%"></div></div>
+    <div class="kfc" onclick="flipKFC()">
+      <div class="kfc-c" id="kfc-c">あ</div>
+      <div class="kfc-r" id="kfc-r">a</div>
+      <div class="kfc-h" id="kfc-h">tap to reveal</div>
+    </div>
+    <div class="fcc" style="margin-bottom:.6rem">
+      <button class="fcb again" onclick="markKana(false)">Again</button>
+      <button class="fcb flip" onclick="flipKFC()">Reveal</button>
+      <button class="fcb good" onclick="markKana(true)">Got it ✓</button>
+    </div>
+    <button class="bkchart" onclick="showKG()">← Back to chart</button>
+  </div>
 </div>
 </div>
 <!-- SURVIVAL HOME -->
 <div class="screen" id="surv">
 <div class="surv-hero">
-<div class="sh-in">
-<button class="back" onclick="goTo('home')" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff;margin-bottom:1rem">←</button>
-<div class="sh-badge">For your trip 🇯🇵</div>
-<h1>Survival Japanese</h1>
-<p>Real phrases for real situations — tap a category</p>
-</div>
+  <div class="sh-in">
+    <button class="back" onclick="goTo('home')" style="background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);color:#fff;margin-bottom:1rem">←</button>
+    <div class="sh-badge">For your trip 🇯🇵</div>
+    <h1>Survival Japanese</h1>
+    <p>Real phrases for real situations — tap a category</p>
+  </div>
 </div>
 <div class="scats" id="scats"></div>
 <div style="height:1rem"></div>
@@ -529,25 +411,20 @@ button{-webkit-tap-highlight-color:transparent}
 <!-- SURVIVAL PHRASES -->
 <div class="screen" id="surv-ph">
 <div class="sph-hd">
-<button class="back" onclick="goTo('surv')">←</button>
-<div class="lhd-info">
-<div class="lhd-n" id="sph-lbl">Survival</div>
-<div class="lhd-t" id="sph-title">Phrases</div>
-</div>
-<div class="sph-mic" id="smic" onclick="toggleSMic()">🎙</div>
+  <button class="back" onclick="goTo('surv')">←</button>
+  <div class="lhd-info"><div class="lhd-n" id="sph-lbl">Survival</div><div class="lhd-t" id="sph-title">Phrases</div></div>
+  <div class="sph-mic" id="smic" onclick="toggleSMic()">🎙</div>
 </div>
 <div class="sph-con">
-<div class="tipnote">Tap a phrase to select it, then press 🎙 to practise pronunciation.</div>
-<div id="sph-list"></div>
-<div class="slr" id="slr"></div>
+  <div class="tipnote">Tap a phrase to select it, then press 🎙 to practise pronunciation.</div>
+  <div id="sph-list"></div>
+  <div class="slr" id="slr"></div>
 </div>
 </div>
 <script>
-// ── KANA ──────────────────────────────────────────────
 const HIRA=[{k:'あ',r:'a'},{k:'い',r:'i'},{k:'う',r:'u'},{k:'え',r:'e'},{k:'お',r:'o'},{k:'か',r:'ka'},{k:'き',r:'ki'},{k:'く',r:'ku'},{k:'け',r:'ke'},{k:'こ',r:'ko'},{k:'さ',r:'sa'},{k:'し',r:'shi'},{k:'す',r:'su'},{k:'せ',r:'se'},{k:'そ',r:'so'},{k:'た',r:'ta'},{k:'ち',r:'chi'},{k:'つ',r:'tsu'},{k:'て',r:'te'},{k:'と',r:'to'},{k:'な',r:'na'},{k:'に',r:'ni'},{k:'ぬ',r:'nu'},{k:'ね',r:'ne'},{k:'の',r:'no'},{k:'は',r:'ha'},{k:'ひ',r:'hi'},{k:'ふ',r:'fu'},{k:'へ',r:'he'},{k:'ほ',r:'ho'},{k:'ま',r:'ma'},{k:'み',r:'mi'},{k:'む',r:'mu'},{k:'め',r:'me'},{k:'も',r:'mo'},{k:'や',r:'ya'},{k:'',r:''},{k:'ゆ',r:'yu'},{k:'',r:''},{k:'よ',r:'yo'},{k:'ら',r:'ra'},{k:'り',r:'ri'},{k:'る',r:'ru'},{k:'れ',r:'re'},{k:'ろ',r:'ro'},{k:'わ',r:'wa'},{k:'',r:''},{k:'',r:''},{k:'',r:''},{k:'を',r:'wo'},{k:'ん',r:'n'},{k:'',r:''},{k:'',r:''},{k:'',r:''},{k:'',r:''}];
 const KATA=[{k:'ア',r:'a'},{k:'イ',r:'i'},{k:'ウ',r:'u'},{k:'エ',r:'e'},{k:'オ',r:'o'},{k:'カ',r:'ka'},{k:'キ',r:'ki'},{k:'ク',r:'ku'},{k:'ケ',r:'ke'},{k:'コ',r:'ko'},{k:'サ',r:'sa'},{k:'シ',r:'shi'},{k:'ス',r:'su'},{k:'セ',r:'se'},{k:'ソ',r:'so'},{k:'タ',r:'ta'},{k:'チ',r:'chi'},{k:'ツ',r:'tsu'},{k:'テ',r:'te'},{k:'ト',r:'to'},{k:'ナ',r:'na'},{k:'ニ',r:'ni'},{k:'ヌ',r:'nu'},{k:'ネ',r:'ne'},{k:'ノ',r:'no'},{k:'ハ',r:'ha'},{k:'ヒ',r:'hi'},{k:'フ',r:'fu'},{k:'ヘ',r:'he'},{k:'ホ',r:'ho'},{k:'マ',r:'ma'},{k:'ミ',r:'mi'},{k:'ム',r:'mu'},{k:'メ',r:'me'},{k:'モ',r:'mo'},{k:'ヤ',r:'ya'},{k:'',r:''},{k:'ユ',r:'yu'},{k:'',r:''},{k:'ヨ',r:'yo'},{k:'ラ',r:'ra'},{k:'リ',r:'ri'},{k:'ル',r:'ru'},{k:'レ',r:'re'},{k:'ロ',r:'ro'},{k:'ワ',r:'wa'},{k:'',r:''},{k:'',r:''},{k:'',r:''},{k:'ヲ',r:'wo'},{k:'ン',r:'n'},{k:'',r:''},{k:'',r:''},{k:'',r:''}];
 
-// ── LESSONS META ──────────────────────────────────────
 const LESSONS=[
   {n:1,t:'New Friends',k:'はじめまして',tags:['です/か','は particle','N の N']},
   {n:2,t:'Shopping',k:'いくらですか',tags:['こそあど','〜じゃない','〜も']},
@@ -562,150 +439,369 @@ const LESSONS=[
   {n:11,t:'After Vacation',k:'〜たことがある',tags:['experience','〜たり〜たり','A や B']},
   {n:12,t:'Feeling Ill',k:'〜なければいけない',tags:['obligation','〜すぎる','〜ほうがいい']}
 ];
-
-// ── LESSON CONTENT ────────────────────────────────────
 const LD={
 1:{
   g:[
-    {n:'X は Y です',m:'X is Y',c:'var(--red)',ex:['<span class="jp">わたしは がくせい です。</span> — I am a student.','<span class="jp">たけしさんは にほんじん です。</span> — Takeshi is Japanese.','<span class="jp">せんもんは にほんご です。</span> — My major is Japanese.']},
-    {n:'〜ですか',m:'Question marker — adds "?" to any statement',c:'var(--blue)',ex:['<span class="jp">がくせいですか？</span> — Are you a student?','<span class="jp">にほんじんですか？</span> — Are you Japanese?']},
-    {n:'N1 の N2',m:"N1's N2 — possession, affiliation, description",c:'var(--grn2)',ex:['<span class="jp">わたしの なまえ</span> — my name','<span class="jp">にほんの だいがく</span> — a university in Japan']}
+    {n:'X は Y です',m:'X is Y — the basic sentence pattern',c:'var(--red)',ex:[
+      '<span class="jp">かれは いしゃ です。</span> — He is a doctor.',
+      '<span class="jp">わたしの ともだちは カナダじん です。</span> — My friend is Canadian.',
+      '<span class="jp">あのひとの せんもんは れきし です。</span> — That person\'s major is history.'
+    ]},
+    {n:'〜ですか',m:'Question marker — turns any statement into a yes/no question',c:'var(--blue)',ex:[
+      '<span class="jp">かのじょは りゅうがくせい ですか？</span> — Is she an international student?',
+      '<span class="jp">おしごとは なんですか？</span> — What is your job?'
+    ]},
+    {n:'N1 の N2',m:"N1's N2 — possession, affiliation, description",c:'var(--grn2)',ex:[
+      '<span class="jp">ともだちの じてんしゃ</span> — my friend\'s bicycle',
+      '<span class="jp">にほんの おんがく</span> — Japanese music'
+    ]}
   ],
   v:[{j:'がくせい',r:'gakusei',e:'student'},{j:'せんせい',r:'sensei',e:'teacher/professor'},{j:'だいがく',r:'daigaku',e:'university'},{j:'にほん',r:'Nihon',e:'Japan'},{j:'わたし',r:'watashi',e:'I / me'},{j:'なまえ',r:'namae',e:'name'},{j:'せんもん',r:'senmon',e:'major'},{j:'でんわ',r:'denwa',e:'telephone'},{j:'ともだち',r:'tomodachi',e:'friend'},{j:'はい',r:'hai',e:'yes (polite)'},{j:'いいえ',r:'iie',e:'no'},{j:'えいご',r:'eigo',e:'English'},{j:'にほんご',r:'Nihongo',e:'Japanese (language)'},{j:'そうですか',r:'sō desu ka',e:'Is that so?'},{j:'です',r:'desu',e:'to be (polite)'}],
   e:[
-    {t:'mc',q:'たけしさんは ___ です。',h:'Takeshi is a student.',o:['がくせい','せんせい','にほん','ともだち'],a:'がくせい',x:'がくせい = student'},
-    {t:'mc',q:'メアリーさんは アメリカじん ___ 。',h:'Mary is American.',o:['です','は','か','の'],a:'です',x:'です ends the sentence politely.'},
-    {t:'write',q:'Translate: "I am a student."',h:'わたし は ___ です',a:'わたしはがくせいです',alt:['わたし は がくせい です'],x:'わたしは がくせい です。'},
-    {t:'mc',q:'せんもんは ___ ですか。',h:'What is your major?',o:['なん','はい','いいえ','ごご'],a:'なん',x:'なん = what (before です)'}
+    {t:'mc',q:'たけしさんは ___ です。',h:'Takeshi is a student.',o:['がくせい','せんせい','にほん','ともだち'],a:'がくせい',x:'がくせい = student',gp:0},
+    {t:'mc',q:'メアリーさんは アメリカじん ___ 。',h:'Mary is American.',o:['です','は','か','の'],a:'です',x:'です ends the sentence politely.',gp:0},
+    {t:'write',q:'Translate: "I am a student."',h:'わたし は ___ です',a:'わたしはがくせいです',alt:['わたし は がくせい です'],x:'わたしは がくせい です。',gp:0},
+    {t:'mc',q:'せんもんは ___ ですか。',h:'What is your major?',o:['なん','はい','いいえ','ごご'],a:'なん',x:'なん = what (before です)',gp:1}
   ],
   p:[{j:'はじめまして',r:'Hajimemashite',e:'Nice to meet you'},{j:'わたしは がくせい です',r:'Watashi wa gakusei desu',e:'I am a student'},{j:'おなまえは なんですか',r:'Onamae wa nan desu ka',e:'What is your name?'},{j:'よろしく おねがいします',r:'Yoroshiku onegaishimasu',e:'Please treat me well'}]
 },
 2:{
   g:[
-    {n:'これ・それ・あれ・どれ',m:'This / that / that over there / which (standalone)',c:'var(--red)',ex:['<span class="jp">これは いくらですか。</span> — How much is this?','<span class="jp">あれは だれの かばんですか。</span> — Whose bag is that over there?']},
-    {n:'この/その/あの/どの + noun',m:'This~/that~/which~ before a noun (not standalone)',c:'var(--blue)',ex:['<span class="jp">このとけいは たかいですね。</span> — This watch is expensive, isn\'t it?']},
-    {n:'〜じゃないです',m:'Is not ~ (negative of です)',c:'var(--red)',ex:['<span class="jp">がくせいじゃないです。</span> — (I\'m) not a student.']},
-    {n:'〜も',m:'Also / too — replaces は or が',c:'var(--grn2)',ex:['<span class="jp">みちこさんも にほんじんです。</span> — Michiko is also Japanese.']}
+    {n:'これ・それ・あれ・どれ',m:'This / that / that over there / which (standalone)',c:'var(--red)',ex:[
+      '<span class="jp">これは わたしの かさ です。</span> — This is my umbrella.',
+      '<span class="jp">あれは なんですか？</span> — What is that over there?',
+      '<span class="jp">どれが あなたの かばん ですか？</span> — Which one is your bag?'
+    ]},
+    {n:'この/その/あの/どの + noun',m:'This~/that~/which~ directly before a noun',c:'var(--blue)',ex:[
+      '<span class="jp">このケーキは おいしいですね。</span> — This cake is delicious, isn\'t it?',
+      '<span class="jp">どの でんしゃに のりますか？</span> — Which train will you take?'
+    ]},
+    {n:'〜じゃないです',m:'Is not ~ (negative of です)',c:'var(--red)',ex:[
+      '<span class="jp">これは わたしの じゃないです。</span> — This is not mine.',
+      '<span class="jp">かれは せんせい じゃないです。</span> — He is not a teacher.'
+    ]},
+    {n:'〜も',m:'Also / too — replaces は or が',c:'var(--grn2)',ex:[
+      '<span class="jp">わたしも コーヒーが すきです。</span> — I like coffee too.',
+      '<span class="jp">あねも にほんごを べんきょうしています。</span> — My sister is also studying Japanese.'
+    ]}
   ],
   v:[{j:'これ',r:'kore',e:'this (near speaker)'},{j:'それ',r:'sore',e:'that (near listener)'},{j:'あれ',r:'are',e:'that (over there)'},{j:'どれ',r:'dore',e:'which?'},{j:'ここ',r:'koko',e:'here'},{j:'そこ',r:'soko',e:'there'},{j:'あそこ',r:'asoko',e:'over there'},{j:'どこ',r:'doko',e:'where?'},{j:'だれ',r:'dare',e:'who?'},{j:'おいしい',r:'oishii',e:'delicious'},{j:'たかい',r:'takai',e:'expensive'},{j:'いくら',r:'ikura',e:'how much?'},{j:'じしょ',r:'jisho',e:'dictionary'},{j:'とけい',r:'tokei',e:'watch/clock'},{j:'ほん',r:'hon',e:'book'},{j:'かばん',r:'kaban',e:'bag'}],
   e:[
-    {t:'mc',q:'___ は いくらですか。（near you）',h:'This one near me',o:['これ','それ','あれ','どれ'],a:'これ',x:'これ = this (near speaker)'},
-    {t:'mc',q:'___ とけいは たかいですね。（far from both）',h:'Adjective form before noun',o:['あの','あれ','この','ここ'],a:'あの',x:'あの + noun = that ~ over there'},
-    {t:'mc',q:'みちこさん ___ にほんじんです。',h:'Michiko is also Japanese.',o:['も','は','を','の'],a:'も',x:'も = also / too'},
-    {t:'finish',q:'これは スーさん ___ ほんです。',h:'の connects possessor to thing',a:'の',x:"スーさんの ほん = Sue's book"}
+    {t:'mc',q:'___ は いくらですか。（near you）',h:'This one near me',o:['これ','それ','あれ','どれ'],a:'これ',x:'これ = this (near speaker)',gp:0},
+    {t:'mc',q:'___ とけいは たかいですね。（far from both）',h:'Adjective form before noun',o:['あの','あれ','この','ここ'],a:'あの',x:'あの + noun = that ~ over there',gp:1},
+    {t:'mc',q:'みちこさん ___ にほんじんです。',h:'Michiko is also Japanese.',o:['も','は','を','の'],a:'も',x:'も = also / too',gp:3},
+    {t:'finish',q:'これは スーさん ___ ほんです。',h:'の connects possessor to thing',a:'の',x:"スーさんの ほん = Sue's book",gp:2}
   ],
   p:[{j:'これは いくらですか',r:'Kore wa ikura desu ka',e:'How much is this?'},{j:'トイレは どこですか',r:'Toire wa doko desu ka',e:'Where is the restroom?'},{j:'それは だれの かばんですか',r:'Sore wa dare no kaban desu ka',e:'Whose bag is that?'}]
 },
 3:{
   g:[
-    {n:'〜ます / 〜ません',m:'Present/future affirmative / negative',c:'var(--red)',ex:['<span class="jp">コーヒーを のみます。</span> — I drink coffee.','<span class="jp">テレビを みません。</span> — I don\'t watch TV.','Irregular: する→します, くる→きます']},
-    {n:'Particles を・で・に・へ',m:'Object / place of action / destination+time / direction',c:'var(--blue)',ex:['<span class="jp">コーヒーを のみます。</span> — を = direct object','<span class="jp">としょかんで べんきょうします。</span> — で = place of action','<span class="jp">がっこうに いきます。</span> — に = destination']},
-    {n:'Frequency adverbs',m:'まいにち/よく/ときどき + ます | あまり/ぜんぜん + ません',c:'var(--yel2)',ex:['<span class="jp">よく テレビを みます。</span> — I often watch TV.','<span class="jp">あまり テレビを みません。</span> — Not much (must use negative)']}
+    {n:'〜ます / 〜ません',m:'Present/future affirmative / negative',c:'var(--red)',ex:[
+      '<span class="jp">まいあさ おちゃを のみます。</span> — I drink green tea every morning.',
+      '<span class="jp">わたしは にくを たべません。</span> — I don\'t eat meat.',
+      'Irregular: する→します, くる→きます'
+    ]},
+    {n:'Particles を・で・に・へ',m:'Object / place of action / destination / direction',c:'var(--blue)',ex:[
+      '<span class="jp">おんがくを ききます。</span> — を = direct object',
+      '<span class="jp">カフェで しごとを します。</span> — で = where the action happens',
+      '<span class="jp">としょかんに いきます。</span> — に = destination'
+    ]},
+    {n:'Frequency adverbs',m:'まいにち/よく/ときどき + ます | あまり/ぜんぜん + ません',c:'var(--yel2)',ex:[
+      '<span class="jp">ときどき えいがを みます。</span> — I sometimes watch movies.',
+      '<span class="jp">ぜんぜん うんどうしません。</span> — I don\'t exercise at all. (negative required)'
+    ]}
   ],
   v:[{j:'いく',r:'iku (U)',e:'to go'},{j:'かえる',r:'kaeru (U)',e:'to return'},{j:'きく',r:'kiku (U)',e:'to listen'},{j:'のむ',r:'nomu (U)',e:'to drink'},{j:'はなす',r:'hanasu (U)',e:'to speak'},{j:'よむ',r:'yomu (U)',e:'to read'},{j:'おきる',r:'okiru (Ru)',e:'to get up'},{j:'たべる',r:'taberu (Ru)',e:'to eat'},{j:'ねる',r:'neru (Ru)',e:'to sleep'},{j:'みる',r:'miru (Ru)',e:'to watch'},{j:'くる',r:'kuru (Irr)',e:'to come'},{j:'する',r:'suru (Irr)',e:'to do'},{j:'あさごはん',r:'asagohan',e:'breakfast'},{j:'ひるごはん',r:'hirugohan',e:'lunch'},{j:'ばんごはん',r:'bangohan',e:'dinner'},{j:'がっこう',r:'gakkō',e:'school'},{j:'きょう',r:'kyō',e:'today'},{j:'あした',r:'ashita',e:'tomorrow'},{j:'まいにち',r:'mainichi',e:'every day'},{j:'ときどき',r:'tokidoki',e:'sometimes'}],
   e:[
-    {t:'mc',q:'わたしは まいにち コーヒー ___ のみます。',h:'Mark the direct object.',o:['を','に','で','は'],a:'を',x:'を marks the direct object.'},
-    {t:'mc',q:'としょかん ___ にほんごを べんきょうします。',h:'Where the action takes place.',o:['で','に','を','へ'],a:'で',x:'で marks where an action takes place.'},
-    {t:'mc',q:'いく → ます form',h:'U-verb',o:['いきます','いります','いえます','いします'],a:'いきます',x:'いく → いきます (U-verb)'},
-    {t:'mc',q:'わたしは あまり テレビを ___。',h:'あまり must use negative.',o:['みません','みます','みますか','みませんか'],a:'みません',x:'あまり and ぜんぜん always pair with negative verb.'}
+    {t:'mc',q:'わたしは まいにち コーヒー ___ のみます。',h:'Mark the direct object.',o:['を','に','で','は'],a:'を',x:'を marks the direct object.',gp:1},
+    {t:'mc',q:'としょかん ___ にほんごを べんきょうします。',h:'Where the action takes place.',o:['で','に','を','へ'],a:'で',x:'で marks where an action takes place.',gp:1},
+    {t:'mc',q:'いく → ます form',h:'U-verb',o:['いきます','いります','いえます','いします'],a:'いきます',x:'いく → いきます (U-verb)',gp:0},
+    {t:'mc',q:'わたしは あまり テレビを ___。',h:'あまり must use negative.',o:['みません','みます','みますか','みませんか'],a:'みません',x:'あまり and ぜんぜん always pair with negative verb.',gp:2}
   ],
   p:[{j:'まいにち コーヒーを のみます',r:'Mainichi kōhī o nomimasu',e:'I drink coffee every day'},{j:'としょかんで にほんごを べんきょうします',r:'Toshokan de Nihongo o benkyō shimasu',e:'I study Japanese at the library'},{j:'あした えいがを みませんか',r:'Ashita eiga o mimasen ka',e:'Would you like to watch a movie tomorrow?'}]
-}};
-
-// Reference data lessons 4-12
-const LR={
-4:{g:['〜ました — past affirmative','〜ませんでした — past negative','〜でした — past copula','X に Y が あります/います — Y exists at X','ある = non-living | いる = living things & people','Location: うえ・した・まえ・うしろ・みぎ・ひだり・なか・となり・ちかく・あいだ'],
- v:[{j:'きのう',r:'kinō',e:'yesterday'},{j:'ある',r:'aru (U)',e:'to exist (non-living)'},{j:'いる',r:'iru (Ru)',e:'to exist (living)'},{j:'うえ',r:'ue',e:'above'},{j:'した',r:'shita',e:'below'},{j:'まえ',r:'mae',e:'in front of'},{j:'うしろ',r:'ushiro',e:'behind'},{j:'となり',r:'tonari',e:'next to'},{j:'いぬ',r:'inu',e:'dog'},{j:'ねこ',r:'neko',e:'cat'},{j:'こうえん',r:'kōen',e:'park'},{j:'とる',r:'toru',e:'to take (photo)'},{j:'まつ',r:'matsu',e:'to wait'},{j:'わかる',r:'wakaru',e:'to understand'},{j:'たくさん',r:'takusan',e:'a lot / many'}],
- e:[{t:'mc',q:'こうえんに いぬが ___。',h:'Dog = living thing!',o:['います','あります','いました','ありました'],a:'います',x:'いる/います = for living things'},{t:'mc',q:'つくえの うえに ほんが ___。',h:'Book = non-living',o:['あります','います','ありました','いました'],a:'あります',x:'ある/あります = for non-living things'},{t:'mc',q:'きのう コーヒーを ___。',h:'I drank coffee yesterday.',o:['のみました','のみます','のみません','のみませんでした'],a:'のみました',x:'Past affirmative: 〜ます → 〜ました'},{t:'mc',q:'わたしは きのう べんきょう ___。',h:'I did NOT study yesterday.',o:['しませんでした','しました','しません','しませんか'],a:'しませんでした',x:'Past negative: 〜ません → 〜ませんでした'}],
- p:[{j:'きのう えいがを みました',r:'Kinō eiga o mimashita',e:'I watched a movie yesterday'},{j:'こうえんに いぬが います',r:'Kōen ni inu ga imasu',e:'There is a dog in the park'},{j:'ぎんこうの となりに ほんやが あります',r:'Ginkō no tonari ni hon-ya ga arimasu',e:'Bookstore next to the bank'}]},
-5:{g:['い-adj: 〜くないです (neg) / 〜かったです (past) / 〜くなかったです (past neg)','な-adj: 〜じゃないです (neg) / 〜でした (past)','⚠️ いい is irregular — use よ〜: よくない・よかった・よくなかった','X は Y が すきです — X likes Y (が, not を!)','〜ましょう = Let\'s ~ | 〜ましょうか = Shall we ~?'],
- v:[{j:'おおきい',r:'ōkii',e:'big'},{j:'ちいさい',r:'chiisai',e:'small'},{j:'あたらしい',r:'atarashii',e:'new'},{j:'ふるい',r:'furui',e:'old (thing)'},{j:'たのしい',r:'tanoshii',e:'fun'},{j:'むずかしい',r:'muzukashii',e:'difficult'},{j:'やさしい',r:'yasashii',e:'easy / kind'},{j:'いい',r:'ii (irregular!)',e:'good'},{j:'きれい(な)',r:'kirei(na)',e:'beautiful / clean'},{j:'げんき(な)',r:'genki(na)',e:'energetic'},{j:'しずか(な)',r:'shizuka(na)',e:'quiet'},{j:'すき(な)',r:'suki(na)',e:'liked / fond of'},{j:'きらい(な)',r:'kirai(na)',e:'disliked'},{j:'だいすき(な)',r:'daisuki(na)',e:'loved / really like'}],
- e:[{t:'mc',q:'このへやは ___ です。（big）',h:'い-adj before です = no change',o:['おおきい','おおきな','おおきく','おおきかった'],a:'おおきい',x:'い-adjectives go directly before です unchanged.'},{t:'mc',q:'きのうの テストは むずかし___。',h:'い-adj past affirmative',o:['かったです','くないです','かったでした','いでした'],a:'かったです',x:'い-adj past: drop い → add かったです'},{t:'mc',q:'わたしは すし___ だいすきです。',h:'What particle marks what you like?',o:['が','を','は','に'],a:'が',x:'すき/きらい use が, not を!'},{t:'mc',q:'えいがを み___！（Let\'s watch!）',h:'Suggestion',o:['ましょう','ませんか','ますか','ません'],a:'ましょう',x:'〜ましょう = Let\'s ~'}],
- p:[{j:'わたしは すしが だいすきです',r:'Watashi wa sushi ga daisuki desu',e:'I love sushi'},{j:'きのうは たのしかったです',r:'Kinō wa tanoshikatta desu',e:'Yesterday was fun'},{j:'いっしょに えいがを みましょう',r:'Issho ni eiga o mimashō',e:"Let's watch a movie together"}]},
-6:{g:['Ru-verbs: drop る → て (たべる→たべて)','U-verbs: く→いて, ぐ→いで, す→して, う/つ/る→って, む/ぶ/ぬ→んで','⚠️ Exception: いく→いって (not いいて!)','Irregular: する→して, くる→きて','〜てください — Please do ~','〜てもいいですか — May I ~?','〜てはいけません — You must not ~'],
- v:[{j:'あける',r:'akeru → あけて',e:'to open'},{j:'しめる',r:'shimeru → しめて',e:'to close'},{j:'まつ',r:'matsu → まって',e:'to wait'},{j:'いく',r:'iku → いって ⚠️',e:'to go'},{j:'する',r:'suru → して',e:'to do'},{j:'くる',r:'kuru → きて',e:'to come'},{j:'わすれる',r:'wasureru → わすれて',e:'to forget'},{j:'つかう',r:'tsukau → つかって',e:'to use'},{j:'まど',r:'mado',e:'window'},{j:'でんき',r:'denki',e:'electricity'},{j:'でんしゃ',r:'densha',e:'train'}],
- e:[{t:'mc',q:'まどを ___ ください。（Please open the window.）',h:'あける → て-form',o:['あけて','あきて','あいて','あけって'],a:'あけて',x:'あける Ru-verb: drop る → あけて'},{t:'mc',q:'ここに すわっても ___ ですか。',h:'Permission pattern',o:['いい','いけません','ください','もいい'],a:'いい',x:'〜てもいいですか = May I ~?'},{t:'mc',q:'のむ → て-form',h:'む ending',o:['のんで','のみて','のんて','のいで'],a:'のんで',x:'む/ぶ/ぬ → んで'},{t:'mc',q:'いく → て-form',h:'Exception!',o:['いって','いいて','いきて','いいで'],a:'いって',x:'いく is an exception: いく→いって'}],
- p:[{j:'まどを あけてください',r:'Mado o akete kudasai',e:'Please open the window'},{j:'ちょっと まってください',r:'Chotto matte kudasai',e:'Please wait a moment'},{j:'ここで しゃしんを とっては いけません',r:'Koko de shashin o totte wa ikemasen',e:'You must not take photos here'}]},
-7:{g:['〜ています (action) = in progress: たべています = is eating','〜ています (change-of-state) = result: けっこんしています = is married','しっています (know) / しりません (don\'t know) — special pattern','verb stem + にいく/くる = go/come in order to do ~','Counting: ひとり(1)・ふたり(2)・さんにん(3+)','〜てから = after doing ~'],
- v:[{j:'かぞく',r:'kazoku',e:'family'},{j:'かみ',r:'kami',e:'hair'},{j:'め',r:'me',e:'eye'},{j:'かわいい',r:'kawaii',e:'cute'},{j:'しっています',r:'shitte imasu',e:'I know'},{j:'しりません',r:'shirimasen',e:"I don't know"},{j:'すむ',r:'sumu',e:'to live'},{j:'けっこんする',r:'kekkon suru',e:'to get married'},{j:'ひとり',r:'hitori',e:'1 person'},{j:'ふたり',r:'futari',e:'2 people'},{j:'コンビニ',r:'konbini',e:'convenience store'},{j:'もしもし',r:'moshimoshi',e:'hello? (phone)'}],
- e:[{t:'mc',q:'メアリーさんは いま ごはんを ___ います。',h:'Mary is eating right now.',o:['たべて','たべに','たべた','たべ'],a:'たべて',x:'〜ています = is doing. て-form + います.'},{t:'mc',q:'たけしさんは けっこん ___ います。',h:'Takeshi is married.',o:['して','を','した','に'],a:'して',x:'けっこんしている = is married (result of change)'},{t:'mc',q:'すしを たべ ___ いきます。',h:"I'm going to eat sushi.",o:['に','を','で','と'],a:'に',x:'verb stem + にいく = go in order to do ~'},{t:'write',q:"Translate: \"I'm going to see a movie.\"",h:'えいが + み + にいきます',a:'えいがをみにいきます',alt:['えいがを みに いきます'],x:'えいがを みにいきます。'}],
- p:[{j:'いま なにを していますか',r:'Ima nani o shite imasu ka',e:"What are you doing now?"},{j:'たけしさんは けっこんしています',r:'Takeshi-san wa kekkon shite imasu',e:'Takeshi is married'},{j:'すしを たべに いきます',r:'Sushi o tabe ni ikimasu',e:"I'm going to eat sushi"}]},
-8:{g:['Short forms: verb=dict, い-adj=drop です, な-adj=+だ, noun=+だ','Negatives: る-verb drop る+ない, u-verb stem change+ない','〜とおもいます = I think that ~ (short form + とおもいます)','〜ないでください = Please don\'t ~ (neg short form + でください)','〜のがすきです = I like doing ~ (verb + のがすきです)','なにか = something | なにも (+neg) = nothing'],
- v:[{j:'おもう',r:'omou',e:'to think'},{j:'いう',r:'iu',e:'to say'},{j:'なにか',r:'nanika',e:'something'},{j:'なにも',r:'nanimo',e:'nothing (+ neg)'},{j:'いつも',r:'itsumo',e:'always'},{j:'なつ',r:'natsu',e:'summer'},{j:'ふゆ',r:'fuyu',e:'winter'},{j:'しごと',r:'shigoto',e:'job / work'},{j:'じょうず(な)',r:'jōzu(na)',e:'skillful'},{j:'ゆうめい(な)',r:'yūmei(na)',e:'famous'},{j:'りょうりする',r:'ryōri suru',e:'to cook'},{j:'うんてんする',r:'unten suru',e:'to drive'}],
- e:[{t:'mc',q:'メアリーさんは いえに いると ___。',h:'I think Mary is at home.',o:['おもいます','いいます','います','なります'],a:'おもいます',x:'short form + とおもいます = I think that ~'},{t:'mc',q:'ここで しゃしんを とら ___ ください。',h:'Negative request',o:['ないで','なくて','ない','なかった'],a:'ないで',x:'〜ないでください = please don\'t ~'},{t:'mc',q:'えいがを みる ___ すきです。',h:'I like watching movies.',o:['のが','のを','のに','のは'],a:'のが',x:'verb + のがすきです = I like doing ~'},{t:'mc',q:'たけしさんは にほんじん ___ とおもいます。',h:'Short form of だ',o:['だ','です','な','で'],a:'だ',x:'noun + だ = short form affirmative'}],
- p:[{j:'メアリーさんは いえに いると おもいます',r:'Mearii-san wa ie ni iru to omoimasu',e:'I think Mary is at home'},{j:'えいがを みるのが すきです',r:'Eiga o miru no ga suki desu',e:'I like watching movies'},{j:'なにか たべたいですか',r:'Nanika tabetai desu ka',e:'Would you like to eat something?'}]},
-9:{g:['verb stem + たいです = I want to ~ (conjugates like い-adj)','たべたいです → たべたくないです → たべたかったです','Noun modification: short form verb/adj + noun = noun that ~','〜から = because (reason + から + result)','まだ〜ていません = haven\'t done yet | もう〜ました = already done'],
- v:[{j:'から',r:'kara',e:'because / from'},{j:'もう',r:'mō',e:'already'},{j:'まだ',r:'mada',e:'still / not yet'},{j:'しけん',r:'shiken',e:'exam'},{j:'あおい',r:'aoi',e:'blue'},{j:'あかい',r:'akai',e:'red'},{j:'くろい',r:'kuroi',e:'black'},{j:'しろい',r:'shiroi',e:'white'},{j:'おどる',r:'odoru',e:'to dance'},{j:'もらう',r:'morau',e:'to receive'},{j:'おぼえる',r:'oboeru',e:'to memorize'},{j:'さんぽする',r:'sanpo suru',e:'to take a walk'}],
- e:[{t:'mc',q:'きょうとに ___ です。（I want to go to Kyoto.）',h:'want to go',o:['いきたい','いきます','いきたかった','いった'],a:'いきたい',x:'verb stem + たいです = want to ~'},{t:'mc',q:'___ から、かいました。（I bought it because it was cheap.）',h:'Reason comes BEFORE から',o:['やすい','たかい','おもしろい','むずかしい'],a:'やすい',x:'〜から = because. やすいから、かいました。'},{t:'mc',q:'まだ しゅくだいを して ___。',h:"Haven't done homework yet.",o:['いません','います','いました','いませんでした'],a:'いません',x:"まだ〜ていません = haven't done yet"},{t:'mc',q:'たけしさんが ___ りょうり は おいしいです。',h:'Short past form modifies noun',o:['つくった','つくる','つくって','つくり'],a:'つくった',x:'short past + noun = noun that ~'}],
- p:[{j:'きょうとに いきたいです',r:'Kyōto ni ikitai desu',e:'I want to go to Kyoto'},{j:'まだ しゅくだいを していません',r:'Mada shukudai o shite imasen',e:"I haven't done homework yet"},{j:'もう ごはんを たべました',r:'Mō gohan o tabemashita',e:"I've already eaten"}]},
-10:{g:['A は B より〜 = A is more ~ than B','Q: AとBと どちらが〜ですか → A: Aのほうが〜です','X の なかで Y が いちばん〜 = Y is the most ~ in/among X','〜つもりです = I intend to ~ (short form + つもりです)','〜になります (な-adj/noun) / 〜くなります (い-adj) = to become ~','noun + で = by means of / using'],
- v:[{j:'より',r:'yori',e:'more than'},{j:'いちばん',r:'ichiban',e:'the most'},{j:'なる',r:'naru',e:'to become'},{j:'つもり',r:'tsumori',e:'intention'},{j:'しんかんせん',r:'shinkansen',e:'bullet train'},{j:'ちかてつ',r:'chikatetsu',e:'subway'},{j:'えき',r:'eki',e:'train station'},{j:'よやく',r:'yoyaku',e:'reservation'},{j:'はる',r:'haru',e:'spring'},{j:'あき',r:'aki',e:'autumn'},{j:'あたたかい',r:'atatakai',e:'warm'},{j:'すずしい',r:'suzushii',e:'cool (weather)'}],
- e:[{t:'mc',q:'とうきょうは おおさか ___ おおきいです。',h:'Tokyo is bigger than Osaka.',o:['より','ほど','いちばん','ほうが'],a:'より',x:'AはBより〜 = A is more ~ than B'},{t:'mc',q:'くだものの なかで なにが ___ すきですか。',h:'What do you like most?',o:['いちばん','もっと','より','ほど'],a:'いちばん',x:'〜のなかで〜がいちばん = the most ~ among ~'},{t:'mc',q:'らいねん にほんに いく ___ です。',h:'I intend to go to Japan next year.',o:['つもり','ほうが','ので','から'],a:'つもり',x:'〜つもりです = I intend to ~'},{t:'mc',q:'しんかんせん ___ きょうとに いきます。',h:'By bullet train',o:['で','に','を','から'],a:'で',x:'〜で = by means of'}],
- p:[{j:'しんかんせんで きょうとに いきます',r:'Shinkansen de Kyōto ni ikimasu',e:"I'll go to Kyoto by bullet train"},{j:'にほんごが じょうずに なりました',r:'Nihongo ga jōzu ni narimashita',e:'My Japanese has improved'},{j:'らいねん にほんに いく つもりです',r:'Rainen Nihon ni iku tsumori desu',e:'I intend to go to Japan next year'}]},
-11:{g:['〜たり〜たりする = do things like ~ and ~ (non-exhaustive, past short + り)','〜たことがあります = have had the experience of ~ (past short + ことがある)','〜たことがありません = have never done ~','A や B = A and B (among other things) — non-exhaustive. Compare と = complete list'],
- v:[{j:'やま',r:'yama',e:'mountain'},{j:'かわ',r:'kawa',e:'river'},{j:'おんせん',r:'onsen',e:'hot spring'},{j:'じんじゃ',r:'jinja',e:'shrine'},{j:'はたらく',r:'hataraku',e:'to work'},{j:'のぼる',r:'noboru',e:'to climb'},{j:'つかれる',r:'tsukareru',e:'to get tired'},{j:'ゆめ',r:'yume',e:'dream'},{j:'しょうらい',r:'shōrai',e:'future'},{j:'ひさしぶり',r:'hisashiburi',e:'long time no see'},{j:'もっと',r:'motto',e:'more'},{j:'だけ',r:'dake',e:'just / only'}],
- e:[{t:'mc',q:'しゅうまつに えいがを みたり おんがくを きい ___ します。',h:'Do things like ~ and ~',o:['たり','て','てから','ながら'],a:'たり',x:'〜たり〜たりする = do things like ~'},{t:'mc',q:'ふじさんに のぼった ___ が ありますか。',h:'Have you ever climbed Mt. Fuji?',o:['こと','もの','ほう','ため'],a:'こと',x:'〜たことがある = have had the experience of ~'},{t:'write',q:'Translate: "I have eaten sushi before."',h:'すしを + たべた + ことがあります',a:'すしをたべたことがあります',alt:['すしを たべた ことがあります'],x:'すしを たべたことがあります。'},{t:'mc',q:'きょうとや なら ___ いきました。',h:'Went to places like Kyoto and Nara',o:['に','と','で','を'],a:'に',x:'きょうとや ならに — や = non-exhaustive, に = destination'}],
- p:[{j:'しゅうまつは えいがを みたり おんがくを きいたり します',r:'Shūmatsu wa eiga o mitari ongaku o kiitari shimasu',e:'On weekends I do things like watch movies and listen to music'},{j:'にほんに いった ことが あります',r:'Nihon ni itta koto ga arimasu',e:'I have been to Japan before'},{j:'きょうとや ならに いきました',r:'Kyōto ya Nara ni ikimashita',e:'I went to places like Kyoto and Nara'}]},
-12:{g:['〜なければいけません = must do ~ (neg stem + なければいけません). Casual: 〜なきゃ','〜すぎます = too ~ / do too much (verb stem or adj stem + すぎます)','〜ほうがいいです = should (past +) / had better not (neg +)','〜ので = because (formal/soft, short form + ので) — more polite than から','〜でしょう = probably ~ (short form + でしょう)'],
- v:[{j:'かぜをひく',r:'kaze o hiku',e:'to catch a cold'},{j:'ねつがある',r:'netsu ga aru',e:'to have a fever'},{j:'おなか',r:'onaka',e:'stomach'},{j:'のど',r:'nodo',e:'throat'},{j:'いたい',r:'itai',e:'painful / hurts'},{j:'おだいじに',r:'odaiji ni',e:'get well soon'},{j:'たぶん',r:'tabun',e:'probably'},{j:'でしょう',r:'deshō',e:'probably / right?'},{j:'ゆき',r:'yuki',e:'snow'},{j:'はれ',r:'hare',e:'sunny weather'},{j:'わるい',r:'warui',e:'bad'},{j:'しんぱいする',r:'shinpai suru',e:'to worry'}],
- e:[{t:'mc',q:'くすりを のま ___ いけません。',h:'I must take medicine.',o:['なければ','ないで','なくて','なかった'],a:'なければ',x:'〜なければいけません = must do ~'},{t:'mc',q:'たべ ___ ました。（I ate too much.）',h:'Too much',o:['すぎ','ほど','すぎる','ほうが'],a:'すぎ',x:'〜すぎる = too much. verb stem + すぎます.'},{t:'mc',q:'くすりを のんだ ___ いいです。',h:'You should take medicine.',o:['ほうが','つもり','より','ので'],a:'ほうが',x:'〜たほうがいいです = you should ~'},{t:'mc',q:'しけんが ある ___ べんきょうします。',h:'Formal reason word',o:['ので','から','けど','が'],a:'ので',x:'〜ので = because (formal/softer than から)'}],
- p:[{j:'くすりを のまなければ いけません',r:'Kusuri o nomanakereba ikemasen',e:'I must take medicine'},{j:'たべすぎました',r:'Tabesugimashita',e:'I ate too much'},{j:'あした あめが ふる でしょう',r:'Ashita ame ga furu deshō',e:'It will probably rain tomorrow'},{j:'おだいじに',r:'Odaiji ni',e:'Get well soon'}]}
+},
+4:{
+  g:[
+    {n:'〜ました / 〜ませんでした',m:'Past tense — did / did not do',c:'var(--red)',ex:[
+      '<span class="jp">きのう ラーメンを たべました。</span> — I ate ramen yesterday.',
+      '<span class="jp">せんしゅう えいがを みませんでした。</span> — I didn\'t watch a movie last week.',
+      '<span class="jp">あさ コーヒーを のみました。</span> — I drank coffee this morning.'
+    ]},
+    {n:'ある / いる',m:'ある = exists (non-living) | いる = exists (living/animate)',c:'var(--blue)',ex:[
+      '<span class="jp">つくえの うえに ほんが あります。</span> — There is a book on the desk.',
+      '<span class="jp">こうえんに こどもが います。</span> — There are children in the park.',
+      '⚠️ ある = objects/plants | いる = people, animals'
+    ]},
+    {n:'Location words',m:'うえ・した・まえ・うしろ・みぎ・ひだり・なか・となり・ちかく',c:'var(--grn2)',ex:[
+      '<span class="jp">えきの まえに カフェが あります。</span> — There is a café in front of the station.',
+      '<span class="jp">ねこは いすの したに います。</span> — The cat is under the chair.',
+      '<span class="jp">コンビニの となりに ゆうびんきょくが あります。</span> — The post office is next to the convenience store.'
+    ]}
+  ],
+  v:[{j:'きのう',r:'kinō',e:'yesterday'},{j:'ある',r:'aru (U)',e:'to exist (non-living)'},{j:'いる',r:'iru (Ru)',e:'to exist (living)'},{j:'うえ',r:'ue',e:'above'},{j:'した',r:'shita',e:'below'},{j:'まえ',r:'mae',e:'in front of'},{j:'うしろ',r:'ushiro',e:'behind'},{j:'となり',r:'tonari',e:'next to'},{j:'いぬ',r:'inu',e:'dog'},{j:'ねこ',r:'neko',e:'cat'},{j:'こうえん',r:'kōen',e:'park'},{j:'とる',r:'toru',e:'to take (photo)'},{j:'まつ',r:'matsu',e:'to wait'},{j:'わかる',r:'wakaru',e:'to understand'},{j:'たくさん',r:'takusan',e:'a lot / many'}],
+  e:[
+    {t:'mc',q:'こうえんに いぬが ___。',h:'Dog = living thing!',o:['います','あります','いました','ありました'],a:'います',x:'いる/います = for living things',gp:1},
+    {t:'mc',q:'つくえの うえに ほんが ___。',h:'Book = non-living',o:['あります','います','ありました','いました'],a:'あります',x:'ある/あります = for non-living things',gp:1},
+    {t:'mc',q:'きのう コーヒーを ___。',h:'I drank coffee yesterday.',o:['のみました','のみます','のみません','のみませんでした'],a:'のみました',x:'Past affirmative: 〜ます → 〜ました',gp:0},
+    {t:'mc',q:'わたしは きのう べんきょう ___。',h:'I did NOT study yesterday.',o:['しませんでした','しました','しません','しませんか'],a:'しませんでした',x:'Past negative: 〜ません → 〜ませんでした',gp:0}
+  ],
+  p:[{j:'きのう えいがを みました',r:'Kinō eiga o mimashita',e:'I watched a movie yesterday'},{j:'こうえんに いぬが います',r:'Kōen ni inu ga imasu',e:'There is a dog in the park'},{j:'ぎんこうの となりに ほんやが あります',r:'Ginkō no tonari ni hon-ya ga arimasu',e:'There is a bookstore next to the bank'}]
+},
+5:{
+  g:[
+    {n:'い-adjective conjugation',m:'present: 〜い | neg: 〜くない | past: 〜かった | past neg: 〜くなかった',c:'var(--red)',ex:[
+      '<span class="jp">このラーメンは からい です。</span> — This ramen is spicy.',
+      '<span class="jp">きのうの てんきは よくなかったです。</span> — Yesterday\'s weather was not good. (いい is irregular!)',
+      '<span class="jp">そのえいがは おもしろくなかったです。</span> — That movie wasn\'t interesting.'
+    ]},
+    {n:'な-adjective conjugation',m:'present: 〜です | neg: 〜じゃない | past: 〜でした',c:'var(--blue)',ex:[
+      '<span class="jp">このまちは しずか です。</span> — This town is quiet.',
+      '<span class="jp">かれは ゆうめい じゃないです。</span> — He is not famous.',
+      '<span class="jp">こどものころ、へやが きれい じゃなかったです。</span> — My room wasn\'t clean as a child.'
+    ]},
+    {n:'X は Y が すきです',m:'X likes Y — note が, not を!',c:'var(--grn2)',ex:[
+      '<span class="jp">わたしは やきとりが だいすきです。</span> — I love yakitori.',
+      '<span class="jp">いもうとは ねこが きらいです。</span> — My little sister dislikes cats.',
+      '⚠️ すき/きらい always use が, not を'
+    ]},
+    {n:'〜ましょう / 〜ましょうか',m:"Let's ~ / Shall we ~?",c:'var(--yel2)',ex:[
+      '<span class="jp">いっしょに ひるごはんを たべましょう！</span> — Let\'s eat lunch together!',
+      '<span class="jp">そろそろ かえりましょうか。</span> — Shall we head home soon?'
+    ]}
+  ],
+  v:[{j:'おおきい',r:'ōkii',e:'big'},{j:'ちいさい',r:'chiisai',e:'small'},{j:'あたらしい',r:'atarashii',e:'new'},{j:'ふるい',r:'furui',e:'old (thing)'},{j:'たのしい',r:'tanoshii',e:'fun'},{j:'むずかしい',r:'muzukashii',e:'difficult'},{j:'やさしい',r:'yasashii',e:'easy / kind'},{j:'いい',r:'ii (irregular!)',e:'good'},{j:'きれい(な)',r:'kirei(na)',e:'beautiful / clean'},{j:'げんき(な)',r:'genki(na)',e:'energetic'},{j:'しずか(な)',r:'shizuka(na)',e:'quiet'},{j:'すき(な)',r:'suki(na)',e:'liked / fond of'},{j:'きらい(な)',r:'kirai(na)',e:'disliked'},{j:'だいすき(な)',r:'daisuki(na)',e:'loved / really like'}],
+  e:[
+    {t:'mc',q:'このへやは ___ です。（big）',h:'い-adj before です = no change',o:['おおきい','おおきな','おおきく','おおきかった'],a:'おおきい',x:'い-adjectives go directly before です unchanged.',gp:0},
+    {t:'mc',q:'きのうの テストは むずかし___。',h:'い-adj past affirmative',o:['かったです','くないです','かったでした','いでした'],a:'かったです',x:'い-adj past: drop い → add かったです',gp:0},
+    {t:'mc',q:'わたしは すし___ だいすきです。',h:'What particle marks what you like?',o:['が','を','は','に'],a:'が',x:'すき/きらい use が, not を!',gp:2},
+    {t:'mc',q:'えいがを み___！（Let\'s watch!）',h:'Suggestion',o:['ましょう','ませんか','ますか','ません'],a:'ましょう',x:'〜ましょう = Let\'s ~',gp:3}
+  ],
+  p:[{j:'わたしは すしが だいすきです',r:'Watashi wa sushi ga daisuki desu',e:'I love sushi'},{j:'きのうは たのしかったです',r:'Kinō wa tanoshikatta desu',e:'Yesterday was fun'},{j:'いっしょに えいがを みましょう',r:'Issho ni eiga o mimashō',e:"Let's watch a movie together"}]
+},
+6:{
+  g:[
+    {n:'て-form formation',m:'Ru-verb: drop る → て | U-verbs: く→いて, す→して, む/ぶ/ぬ→んで, う/つ/る→って | Irr: する→して, くる→きて',c:'var(--red)',ex:[
+      '<span class="jp">たべる → たべて</span>　(Ru-verb: drop る)',
+      '<span class="jp">のむ → のんで</span>　(U-verb: む→んで)',
+      '⚠️ いく → いって (exception! not いいて)'
+    ]},
+    {n:'〜てください',m:'Please do ~ (polite request)',c:'var(--blue)',ex:[
+      '<span class="jp">ゆっくり はなしてください。</span> — Please speak slowly.',
+      '<span class="jp">ここに なまえを かいてください。</span> — Please write your name here.'
+    ]},
+    {n:'〜てもいいですか',m:'May I ~? (asking permission)',c:'var(--grn2)',ex:[
+      '<span class="jp">しゃしんを とっても いいですか？</span> — May I take a photo?',
+      '<span class="jp">このペンを つかっても いいですか？</span> — May I use this pen?'
+    ]},
+    {n:'〜てはいけません',m:'You must not ~ (prohibition)',c:'var(--yel2)',ex:[
+      '<span class="jp">ここで たばこを すっては いけません。</span> — You must not smoke here.',
+      '<span class="jp">じゅぎょうちゅうに ねては いけません。</span> — You must not sleep during class.'
+    ]}
+  ],
+  v:[{j:'あける',r:'akeru → あけて',e:'to open'},{j:'しめる',r:'shimeru → しめて',e:'to close'},{j:'まつ',r:'matsu → まって',e:'to wait'},{j:'いく',r:'iku → いって ⚠️',e:'to go'},{j:'する',r:'suru → して',e:'to do'},{j:'くる',r:'kuru → きて',e:'to come'},{j:'わすれる',r:'wasureru → わすれて',e:'to forget'},{j:'つかう',r:'tsukau → つかって',e:'to use'},{j:'まど',r:'mado',e:'window'},{j:'でんき',r:'denki',e:'electricity'},{j:'でんしゃ',r:'densha',e:'train'}],
+  e:[
+    {t:'mc',q:'まどを ___ ください。（Please open the window.）',h:'あける → て-form',o:['あけて','あきて','あいて','あけって'],a:'あけて',x:'あける Ru-verb: drop る → あけて',gp:1},
+    {t:'mc',q:'ここに すわっても ___ ですか。',h:'Permission pattern',o:['いい','いけません','ください','もいい'],a:'いい',x:'〜てもいいですか = May I ~?',gp:2},
+    {t:'mc',q:'のむ → て-form',h:'む ending',o:['のんで','のみて','のんて','のいで'],a:'のんで',x:'む/ぶ/ぬ → んで',gp:0},
+    {t:'mc',q:'いく → て-form',h:'Exception!',o:['いって','いいて','いきて','いいで'],a:'いって',x:'いく is an exception: いく→いって',gp:0}
+  ],
+  p:[{j:'まどを あけてください',r:'Mado o akete kudasai',e:'Please open the window'},{j:'ちょっと まってください',r:'Chotto matte kudasai',e:'Please wait a moment'},{j:'ここで しゃしんを とっては いけません',r:'Koko de shashin o totte wa ikemasen',e:'You must not take photos here'}]
+},
+7:{
+  g:[
+    {n:'〜ています (progressive)',m:'Action in progress — is doing ~',c:'var(--red)',ex:[
+      '<span class="jp">いま シャワーを あびています。</span> — I\'m taking a shower right now.',
+      '<span class="jp">そとで あめが ふっています。</span> — It\'s raining outside.',
+      '<span class="jp">ともだちを まっています。</span> — I\'m waiting for a friend.'
+    ]},
+    {n:'〜ています (result state)',m:'Result of a change — describes current state',c:'var(--blue)',ex:[
+      '<span class="jp">あねは けっこんしています。</span> — My sister is married.',
+      '<span class="jp">かれは めがねを かけています。</span> — He is wearing glasses.',
+      '⚠️ しっています (know) / しりません (don\'t know)'
+    ]},
+    {n:'verb stem + にいく/くる',m:'Go/come in order to ~ (purpose)',c:'var(--grn2)',ex:[
+      '<span class="jp">ともだちに あいに いきます。</span> — I\'m going to meet a friend.',
+      '<span class="jp">ほんを かいに コンビニに いきました。</span> — I went to the convenience store to buy a book.'
+    ]},
+    {n:'Counting people',m:'ひとり(1)・ふたり(2)・さんにん(3)・よにん(4)...',c:'var(--yel2)',ex:[
+      '<span class="jp">かぞくは よにんです。</span> — There are four people in my family.',
+      '<span class="jp">ひとりで りょこうしました。</span> — I traveled alone.'
+    ]}
+  ],
+  v:[{j:'かぞく',r:'kazoku',e:'family'},{j:'かみ',r:'kami',e:'hair'},{j:'め',r:'me',e:'eye'},{j:'かわいい',r:'kawaii',e:'cute'},{j:'しっています',r:'shitte imasu',e:'I know'},{j:'しりません',r:'shirimasen',e:"I don't know"},{j:'すむ',r:'sumu',e:'to live'},{j:'けっこんする',r:'kekkon suru',e:'to get married'},{j:'ひとり',r:'hitori',e:'1 person'},{j:'ふたり',r:'futari',e:'2 people'},{j:'コンビニ',r:'konbini',e:'convenience store'},{j:'もしもし',r:'moshimoshi',e:'hello? (phone)'}],
+  e:[
+    {t:'mc',q:'メアリーさんは いま ごはんを ___ います。',h:'Mary is eating right now.',o:['たべて','たべに','たべた','たべ'],a:'たべて',x:'〜ています = is doing. て-form + います.',gp:0},
+    {t:'mc',q:'たけしさんは けっこん ___ います。',h:'Takeshi is married.',o:['して','を','した','に'],a:'して',x:'けっこんしている = is married (result of change)',gp:1},
+    {t:'mc',q:'すしを たべ ___ いきます。',h:"I'm going to eat sushi.",o:['に','を','で','と'],a:'に',x:'verb stem + にいく = go in order to do ~',gp:2},
+    {t:'write',q:"Translate: \"I'm going to see a movie.\"",h:'えいが + み + にいきます',a:'えいがをみにいきます',alt:['えいがを みに いきます'],x:'えいがを みにいきます。',gp:2}
+  ],
+  p:[{j:'いま なにを していますか',r:'Ima nani o shite imasu ka',e:"What are you doing now?"},{j:'たけしさんは けっこんしています',r:'Takeshi-san wa kekkon shite imasu',e:'Takeshi is married'},{j:'すしを たべに いきます',r:'Sushi o tabe ni ikimasu',e:"I'm going to eat sushi"}]
+},
+8:{
+  g:[
+    {n:'Short forms',m:'Plain forms: verb=dictionary, い-adj=drop です, な-adj/noun add だ',c:'var(--red)',ex:[
+      '<span class="jp">たべる / たべない / たべた / たべなかった</span> — Ru-verb short forms',
+      '<span class="jp">おもしろい / おもしろくない / おもしろかった</span> — い-adj short forms',
+      '<span class="jp">げんきだ / げんきじゃない / げんきだった</span> — な-adj short forms'
+    ]},
+    {n:'〜とおもいます',m:'I think that ~ (short form + とおもいます)',c:'var(--blue)',ex:[
+      '<span class="jp">あした あめが ふると おもいます。</span> — I think it will rain tomorrow.',
+      '<span class="jp">かれは まだ ねていると おもいます。</span> — I think he is still sleeping.'
+    ]},
+    {n:'〜ないでください',m:"Please don't ~ (negative short form + でください)",c:'var(--grn2)',ex:[
+      '<span class="jp">ここで たべないでください。</span> — Please don\'t eat here.',
+      '<span class="jp">しんぱいしないでください。</span> — Please don\'t worry.'
+    ]},
+    {n:'〜のがすきです',m:'I like doing ~ (verb dict. form + のがすきです)',c:'var(--yel2)',ex:[
+      '<span class="jp">りょうりを するのが すきです。</span> — I like cooking.',
+      '<span class="jp">やまを のぼるのが すきですか？</span> — Do you like climbing mountains?'
+    ]}
+  ],
+  v:[{j:'おもう',r:'omou',e:'to think'},{j:'いう',r:'iu',e:'to say'},{j:'なにか',r:'nanika',e:'something'},{j:'なにも',r:'nanimo',e:'nothing (+ neg)'},{j:'いつも',r:'itsumo',e:'always'},{j:'なつ',r:'natsu',e:'summer'},{j:'ふゆ',r:'fuyu',e:'winter'},{j:'しごと',r:'shigoto',e:'job / work'},{j:'じょうず(な)',r:'jōzu(na)',e:'skillful'},{j:'ゆうめい(な)',r:'yūmei(na)',e:'famous'},{j:'りょうりする',r:'ryōri suru',e:'to cook'},{j:'うんてんする',r:'unten suru',e:'to drive'}],
+  e:[
+    {t:'mc',q:'メアリーさんは いえに いると ___。',h:'I think Mary is at home.',o:['おもいます','いいます','います','なります'],a:'おもいます',x:'short form + とおもいます = I think that ~',gp:1},
+    {t:'mc',q:'ここで しゃしんを とら ___ ください。',h:'Negative request',o:['ないで','なくて','ない','なかった'],a:'ないで',x:'〜ないでください = please don\'t ~',gp:2},
+    {t:'mc',q:'えいがを みる ___ すきです。',h:'I like watching movies.',o:['のが','のを','のに','のは'],a:'のが',x:'verb + のがすきです = I like doing ~',gp:3},
+    {t:'mc',q:'たけしさんは にほんじん ___ とおもいます。',h:'Short form of だ',o:['だ','です','な','で'],a:'だ',x:'noun + だ = short form affirmative',gp:1}
+  ],
+  p:[{j:'メアリーさんは いえに いると おもいます',r:'Mearii-san wa ie ni iru to omoimasu',e:'I think Mary is at home'},{j:'えいがを みるのが すきです',r:'Eiga o miru no ga suki desu',e:'I like watching movies'},{j:'なにか たべたいですか',r:'Nanika tabetai desu ka',e:'Would you like to eat something?'}]
+},
+9:{
+  g:[
+    {n:'〜たいです',m:'I want to ~ (verb stem + たいです) — conjugates like い-adj',c:'var(--red)',ex:[
+      '<span class="jp">おいしい ラーメンが たべたいです。</span> — I want to eat delicious ramen.',
+      '<span class="jp">もっと にほんごが はなしたいです。</span> — I want to speak more Japanese.',
+      '<span class="jp">きょうは どこにも いきたくないです。</span> — I don\'t want to go anywhere today.'
+    ]},
+    {n:'Noun modification',m:'Short form verb/adj + noun = "noun that ~" (relative clause)',c:'var(--blue)',ex:[
+      '<span class="jp">わたしが すきな きょく</span> — a song that I like',
+      '<span class="jp">あそこに いる ひと</span> — the person who is over there',
+      '<span class="jp">きのう かった ほん</span> — the book I bought yesterday'
+    ]},
+    {n:'〜から',m:'Because ~ (reason + から + result)',c:'var(--grn2)',ex:[
+      '<span class="jp">つかれたから、はやく ねます。</span> — I\'m tired, so I\'ll sleep early.',
+      '<span class="jp">きょうは やすみだから、どこかに いきましょう。</span> — Today is a day off, so let\'s go somewhere.'
+    ]},
+    {n:'まだ〜ていません / もう〜ました',m:"Haven't done yet / have already done",c:'var(--yel2)',ex:[
+      '<span class="jp">まだ あさごはんを たべていません。</span> — I haven\'t eaten breakfast yet.',
+      '<span class="jp">もう チケットを かいました。</span> — I\'ve already bought the ticket.'
+    ]}
+  ],
+  v:[{j:'から',r:'kara',e:'because / from'},{j:'もう',r:'mō',e:'already'},{j:'まだ',r:'mada',e:'still / not yet'},{j:'しけん',r:'shiken',e:'exam'},{j:'あおい',r:'aoi',e:'blue'},{j:'あかい',r:'akai',e:'red'},{j:'くろい',r:'kuroi',e:'black'},{j:'しろい',r:'shiroi',e:'white'},{j:'おどる',r:'odoru',e:'to dance'},{j:'もらう',r:'morau',e:'to receive'},{j:'おぼえる',r:'oboeru',e:'to memorize'},{j:'さんぽする',r:'sanpo suru',e:'to take a walk'}],
+  e:[
+    {t:'mc',q:'きょうとに ___ です。（I want to go to Kyoto.）',h:'want to go',o:['いきたい','いきます','いきたかった','いった'],a:'いきたい',x:'verb stem + たいです = want to ~',gp:0},
+    {t:'mc',q:'___ から、かいました。（I bought it because it was cheap.）',h:'Reason comes BEFORE から',o:['やすい','たかい','おもしろい','むずかしい'],a:'やすい',x:'〜から = because. やすいから、かいました。',gp:2},
+    {t:'mc',q:'まだ しゅくだいを して ___。',h:"Haven't done homework yet.",o:['いません','います','いました','いませんでした'],a:'いません',x:"まだ〜ていません = haven't done yet",gp:3},
+    {t:'mc',q:'たけしさんが ___ りょうり は おいしいです。',h:'Short past form modifies noun',o:['つくった','つくる','つくって','つくり'],a:'つくった',x:'short past + noun = noun that ~',gp:1}
+  ],
+  p:[{j:'きょうとに いきたいです',r:'Kyōto ni ikitai desu',e:'I want to go to Kyoto'},{j:'まだ しゅくだいを していません',r:'Mada shukudai o shite imasen',e:"I haven't done homework yet"},{j:'もう ごはんを たべました',r:'Mō gohan o tabemashita',e:"I've already eaten"}]
+},
+10:{
+  g:[
+    {n:'A は B より〜',m:'A is more ~ than B (comparison)',c:'var(--red)',ex:[
+      '<span class="jp">バスより でんしゃの ほうが はやいです。</span> — The train is faster than the bus.',
+      '<span class="jp">なつより ふゆの ほうが すきです。</span> — I like winter more than summer.',
+      'Q: AとBと どちらが〜? → A: Aのほうが〜です'
+    ]},
+    {n:'X の なかで Y が いちばん〜',m:'Y is the most ~ in/among X',c:'var(--blue)',ex:[
+      '<span class="jp">このみせで どれが いちばん にんきですか？</span> — Which is the most popular in this shop?',
+      '<span class="jp">スポーツの なかで サッカーが いちばん すきです。</span> — Among sports, I like soccer the most.'
+    ]},
+    {n:'〜つもりです',m:'I intend to ~ / I plan to ~ (dict. form + つもりです)',c:'var(--grn2)',ex:[
+      '<span class="jp">らいねん にほんに いく つもりです。</span> — I intend to go to Japan next year.',
+      '<span class="jp">きょうは はやく かえる つもりです。</span> — I plan to go home early today.'
+    ]},
+    {n:'〜くなります / 〜になります',m:'To become ~ (い-adj stem+く | な-adj/noun+に)',c:'var(--yel2)',ex:[
+      '<span class="jp">そとが くらく なりました。</span> — It got dark outside.',
+      '<span class="jp">にほんごが すきに なりました。</span> — I came to like Japanese.',
+      '<span class="jp">かれは いしゃに なりたいです。</span> — He wants to become a doctor.'
+    ]}
+  ],
+  v:[{j:'より',r:'yori',e:'more than'},{j:'いちばん',r:'ichiban',e:'the most'},{j:'なる',r:'naru',e:'to become'},{j:'つもり',r:'tsumori',e:'intention'},{j:'しんかんせん',r:'shinkansen',e:'bullet train'},{j:'ちかてつ',r:'chikatetsu',e:'subway'},{j:'えき',r:'eki',e:'train station'},{j:'よやく',r:'yoyaku',e:'reservation'},{j:'はる',r:'haru',e:'spring'},{j:'あき',r:'aki',e:'autumn'},{j:'あたたかい',r:'atatakai',e:'warm'},{j:'すずしい',r:'suzushii',e:'cool (weather)'}],
+  e:[
+    {t:'mc',q:'とうきょうは おおさか ___ おおきいです。',h:'Tokyo is bigger than Osaka.',o:['より','ほど','いちばん','ほうが'],a:'より',x:'AはBより〜 = A is more ~ than B',gp:0},
+    {t:'mc',q:'くだものの なかで なにが ___ すきですか。',h:'What do you like most?',o:['いちばん','もっと','より','ほど'],a:'いちばん',x:'〜のなかで〜がいちばん = the most ~ among ~',gp:1},
+    {t:'mc',q:'らいねん にほんに いく ___ です。',h:'I intend to go to Japan next year.',o:['つもり','ほうが','ので','から'],a:'つもり',x:'〜つもりです = I intend to ~',gp:2},
+    {t:'mc',q:'しんかんせん ___ きょうとに いきます。',h:'By bullet train',o:['で','に','を','から'],a:'で',x:'〜で = by means of',gp:0}
+  ],
+  p:[{j:'しんかんせんで きょうとに いきます',r:'Shinkansen de Kyōto ni ikimasu',e:"I'll go to Kyoto by bullet train"},{j:'にほんごが じょうずに なりました',r:'Nihongo ga jōzu ni narimashita',e:'My Japanese has improved'},{j:'らいねん にほんに いく つもりです',r:'Rainen Nihon ni iku tsumori desu',e:'I intend to go to Japan next year'}]
+},
+11:{
+  g:[
+    {n:'〜たり〜たりする',m:'Do things like ~ and ~ (non-exhaustive list of actions)',c:'var(--red)',ex:[
+      '<span class="jp">やすみの ひは おんがくを きいたり ほんを よんだり します。</span> — On days off I listen to music, read, and so on.',
+      '<span class="jp">きのうは ともだちに あったり かいものを したり しました。</span> — Yesterday I met a friend, went shopping, and so on.'
+    ]},
+    {n:'〜たことがあります',m:'Have had the experience of ~ (past short form + ことがあります)',c:'var(--blue)',ex:[
+      '<span class="jp">きものを きたことが あります。</span> — I have worn a kimono before.',
+      '<span class="jp">ひとりで りょうりを したことが ありません。</span> — I have never cooked alone.',
+      '⚠️ Always uses the past short form (たべた, いった, etc.)'
+    ]},
+    {n:'A や B',m:'A and B (among other things) — non-exhaustive. と = complete list',c:'var(--grn2)',ex:[
+      '<span class="jp">スーパーで やさいや くだものを かいました。</span> — I bought vegetables and fruit (etc.) at the supermarket.',
+      '<span class="jp">ともだちや かぞくと りょこうしたいです。</span> — I want to travel with friends and family (etc.).'
+    ]}
+  ],
+  v:[{j:'やま',r:'yama',e:'mountain'},{j:'かわ',r:'kawa',e:'river'},{j:'おんせん',r:'onsen',e:'hot spring'},{j:'じんじゃ',r:'jinja',e:'shrine'},{j:'はたらく',r:'hataraku',e:'to work'},{j:'のぼる',r:'noboru',e:'to climb'},{j:'つかれる',r:'tsukareru',e:'to get tired'},{j:'ゆめ',r:'yume',e:'dream'},{j:'しょうらい',r:'shōrai',e:'future'},{j:'ひさしぶり',r:'hisashiburi',e:'long time no see'},{j:'もっと',r:'motto',e:'more'},{j:'だけ',r:'dake',e:'just / only'}],
+  e:[
+    {t:'mc',q:'しゅうまつに えいがを みたり おんがくを きい ___ します。',h:'Do things like ~ and ~',o:['たり','て','てから','ながら'],a:'たり',x:'〜たり〜たりする = do things like ~',gp:0},
+    {t:'mc',q:'ふじさんに のぼった ___ が ありますか。',h:'Have you ever climbed Mt. Fuji?',o:['こと','もの','ほう','ため'],a:'こと',x:'〜たことがある = have had the experience of ~',gp:1},
+    {t:'write',q:'Translate: "I have eaten sushi before."',h:'すしを + たべた + ことがあります',a:'すしをたべたことがあります',alt:['すしを たべた ことがあります'],x:'すしを たべたことがあります。',gp:1},
+    {t:'mc',q:'きょうとや なら ___ いきました。',h:'Went to places like Kyoto and Nara',o:['に','と','で','を'],a:'に',x:'きょうとや ならに — や = non-exhaustive, に = destination',gp:2}
+  ],
+  p:[{j:'しゅうまつは えいがを みたり おんがくを きいたり します',r:'Shūmatsu wa eiga o mitari ongaku o kiitari shimasu',e:'On weekends I do things like watch movies and listen to music'},{j:'にほんに いった ことが あります',r:'Nihon ni itta koto ga arimasu',e:'I have been to Japan before'},{j:'きょうとや ならに いきました',r:'Kyōto ya Nara ni ikimashita',e:'I went to places like Kyoto and Nara'}]
+},
+12:{
+  g:[
+    {n:'〜なければいけません',m:'Must do ~ (neg stem + なければいけません). Casual: 〜なきゃ',c:'var(--red)',ex:[
+      '<span class="jp">まいにち くすりを のまなければいけません。</span> — I have to take medicine every day.',
+      '<span class="jp">あした はやく おきなければいけません。</span> — I have to wake up early tomorrow.',
+      'Casual shortcut: いかなきゃ = gotta go'
+    ]},
+    {n:'〜すぎます',m:'Too ~ / do too much (verb stem or adj stem + すぎます)',c:'var(--blue)',ex:[
+      '<span class="jp">ゆうべ たべすぎました。</span> — I ate too much last night.',
+      '<span class="jp">このスープは からすぎます。</span> — This soup is too spicy.',
+      '<span class="jp">さいきん はたらきすぎています。</span> — I\'ve been working too much lately.'
+    ]},
+    {n:'〜ほうがいいです',m:'You should ~ (past + ほうがいい) / shouldn\'t (neg + ほうがいい)',c:'var(--grn2)',ex:[
+      '<span class="jp">はやく ねたほうがいいです。</span> — You should sleep early.',
+      '<span class="jp">むりを しないほうがいいです。</span> — You shouldn\'t push yourself too hard.'
+    ]},
+    {n:'〜ので',m:'Because ~ (short form + ので) — softer and more formal than から',c:'var(--yel2)',ex:[
+      '<span class="jp">かぜを ひいたので、うちに います。</span> — Because I caught a cold, I\'m staying home.',
+      '<span class="jp">しけんが あるので、べんきょうします。</span> — Because I have an exam, I\'ll study.',
+      '⚠️ ので sounds more polite/objective than から'
+    ]}
+  ],
+  v:[{j:'かぜをひく',r:'kaze o hiku',e:'to catch a cold'},{j:'ねつがある',r:'netsu ga aru',e:'to have a fever'},{j:'おなか',r:'onaka',e:'stomach'},{j:'のど',r:'nodo',e:'throat'},{j:'いたい',r:'itai',e:'painful / hurts'},{j:'おだいじに',r:'odaiji ni',e:'get well soon'},{j:'たぶん',r:'tabun',e:'probably'},{j:'でしょう',r:'deshō',e:'probably / right?'},{j:'ゆき',r:'yuki',e:'snow'},{j:'はれ',r:'hare',e:'sunny weather'},{j:'わるい',r:'warui',e:'bad'},{j:'しんぱいする',r:'shinpai suru',e:'to worry'}],
+  e:[
+    {t:'mc',q:'くすりを のま ___ いけません。',h:'I must take medicine.',o:['なければ','ないで','なくて','なかった'],a:'なければ',x:'〜なければいけません = must do ~',gp:0},
+    {t:'mc',q:'たべ ___ ました。（I ate too much.）',h:'Too much',o:['すぎ','ほど','すぎる','ほうが'],a:'すぎ',x:'〜すぎる = too much. verb stem + すぎます.',gp:1},
+    {t:'mc',q:'くすりを のんだ ___ いいです。',h:'You should take medicine.',o:['ほうが','つもり','より','ので'],a:'ほうが',x:'〜たほうがいいです = you should ~',gp:2},
+    {t:'mc',q:'しけんが ある ___ べんきょうします。',h:'Formal reason word',o:['ので','から','けど','が'],a:'ので',x:'〜ので = because (formal/softer than から)',gp:3}
+  ],
+  p:[{j:'くすりを のまなければ いけません',r:'Kusuri o nomanakereba ikemasen',e:'I must take medicine'},{j:'たべすぎました',r:'Tabesugimashita',e:'I ate too much'},{j:'あした あめが ふる でしょう',r:'Ashita ame ga furu deshō',e:'It will probably rain tomorrow'},{j:'おだいじに',r:'Odaiji ni',e:'Get well soon'}]
+}
 };
-
-// ── SURVIVAL ──────────────────────────────────────────
 const SURV=[
 {id:'basics',ic:'💬',n:'Everyday Basics',d:'きほん — greetings, thanks, apologies',p:[{s:'Morning',j:'おはようございます',r:'Ohayō gozaimasu',e:'Good morning'},{s:'Hello',j:'こんにちは',r:'Konnichiwa',e:'Hello'},{s:'Evening',j:'こんばんは',r:'Konbanwa',e:'Good evening'},{s:'Goodbye',j:'さようなら',r:'Sayōnara',e:'Goodbye'},{s:'Thanks',j:'ありがとうございます',r:'Arigatō gozaimasu',e:'Thank you'},{s:'Sorry',j:'すみません',r:'Sumimasen',e:'Excuse me / Sorry'},{s:"Don't understand",j:'わかりません',r:'Wakarimasen',e:"I don't understand"},{s:'Slow down',j:'ゆっくり はなしてください',r:'Yukkuri hanashite kudasai',e:'Please speak slowly'},{s:'Say again',j:'もういちど おねがいします',r:'Mō ichido onegaishimasu',e:'Once more please'},{s:'First visit',j:'にほんは はじめてです',r:'Nihon wa hajimete desu',e:'This is my first time in Japan'}]},
 {id:'konbini',ic:'🏪',n:'Convenience Store',d:'コンビニ — your best friend in Japan',p:[{s:'Greeting',j:'いらっしゃいませ',r:'Irasshaimase',e:'Welcome! (staff say this to you)'},{s:'Card',j:'カードで おねがいします',r:'Kādo de onegaishimasu',e:'Card payment please'},{s:'Cash',j:'げんきんで おねがいします',r:'Genkin de onegaishimasu',e:'Cash please'},{s:'No receipt',j:'レシートは けっこうです',r:'Reshīto wa kekkō desu',e:'No receipt needed'},{s:'Heat it?',j:'あたためますか？',r:'Atatamemasu ka?',e:'Shall I heat it up? (staff asks)'},{s:'Yes please',j:'はい、おねがいします',r:'Hai, onegaishimasu',e:'Yes please'},{s:'No thanks',j:'いいえ、けっこうです',r:'Iie, kekkō desu',e:'No thank you'},{s:'Bag?',j:'ふくろは いりますか？',r:'Fukuro wa irimasu ka?',e:'Do you need a bag?'},{s:'A bag please',j:'ふくろを ください',r:'Fukuro o kudasai',e:'A bag please'},{s:'ATM',j:'えーてぃーえむは どこですか？',r:'ATM wa doko desu ka?',e:'Where is the ATM?'}]},
 {id:'restaurant',ic:'🍜',n:'Restaurant',d:'レストラン — ordering food confidently',p:[{s:'How many?',j:'なんめいさまですか？',r:'Nan-mei-sama desu ka?',e:'How many people? (staff asks)'},{s:'Two',j:'ふたりです',r:'Futari desu',e:'Two people'},{s:'One',j:'ひとりです',r:'Hitori desu',e:'One person'},{s:'Order this',j:'これを ください',r:'Kore o kudasai',e:"I'll have this"},{s:'Recommend',j:'おすすめは なんですか？',r:'Osusume wa nan desu ka?',e:'What do you recommend?'},{s:'Egg allergy',j:'たまごアレルギーが あります',r:'Tamago arerugī ga arimasu',e:'I have an egg allergy'},{s:'No meat',j:'にくは たべられません',r:'Niku wa taberaremasen',e:'I cannot eat meat'},{s:'The bill',j:'おかいけい おねがいします',r:'Okaikei onegaishimasu',e:'The bill please'},{s:'Delicious!',j:'おいしいです！',r:'Oishii desu!',e:"It's delicious!"},{s:'Call staff',j:'すみません！',r:'Sumimasen!',e:'Excuse me! (to get attention)'}]},
-{id:'train',ic:'🚅',n:'Trains & Transport',d:'でんしゃ — navigating Japan\'s trains',p:[{s:'Price to ~',j:'〜まで いくらですか？',r:'~made ikura desu ka?',e:'How much to ~?'},{s:'One ticket',j:'〜まで いちまいください',r:'~made ichimai kudasai',e:'One ticket to ~ please'},{s:'Platform',j:'〜ゆきは なんばんせんですか？',r:'~yuki wa nanban-sen desu ka?',e:'What platform for the train to ~?'},{s:'Lost',j:'すみません、〜えきは どこですか？',r:'Sumimasen, ~eki wa doko desu ka?',e:'Excuse me, where is ~ station?'},{s:'Wrong train',j:'まちがえました',r:'Machigaemashita',e:'I got on the wrong train'},{s:'Want to go',j:'〜にいきたいのですが',r:'~ni ikitai no desu ga',e:'I want to go to ~ (trail off politely)'},{s:'IC card',j:'スイカで おねがいします',r:'Suica de onegaishimasu',e:'Suica card please'},{s:'Taxi',j:'〜まで おねがいします',r:'~made onegaishimasu',e:'To ~ please (in a taxi)'},{s:'Stop here',j:'ここで とめてください',r:'Koko de tomete kudasai',e:'Please stop here'}]},
+{id:'train',ic:'🚅',n:'Trains & Transport',d:"でんしゃ — navigating Japan's trains",p:[{s:'Price to ~',j:'〜まで いくらですか？',r:'~made ikura desu ka?',e:'How much to ~?'},{s:'One ticket',j:'〜まで いちまいください',r:'~made ichimai kudasai',e:'One ticket to ~ please'},{s:'Platform',j:'〜ゆきは なんばんせんですか？',r:'~yuki wa nanban-sen desu ka?',e:'What platform for the train to ~?'},{s:'Lost',j:'すみません、〜えきは どこですか？',r:'Sumimasen, ~eki wa doko desu ka?',e:'Excuse me, where is ~ station?'},{s:'Wrong train',j:'まちがえました',r:'Machigaemashita',e:'I got on the wrong train'},{s:'Want to go',j:'〜にいきたいのですが',r:'~ni ikitai no desu ga',e:'I want to go to ~ (trail off politely)'},{s:'IC card',j:'スイカで おねがいします',r:'Suica de onegaishimasu',e:'Suica card please'},{s:'Taxi',j:'〜まで おねがいします',r:'~made onegaishimasu',e:'To ~ please (in a taxi)'},{s:'Stop here',j:'ここで とめてください',r:'Koko de tomete kudasai',e:'Please stop here'}]},
 {id:'shopping',ic:'🛍️',n:'Shopping',d:'かいもの — buying things in Japan',p:[{s:'Just looking',j:'みているだけです',r:'Mite iru dake desu',e:'Just looking, thanks'},{s:'How much',j:'これは いくらですか？',r:'Kore wa ikura desu ka?',e:'How much is this?'},{s:'Try on',j:'きてみても いいですか？',r:'Kite mite mo ii desu ka?',e:'May I try this on?'},{s:'Bigger?',j:'もっと おおきいのは ありますか？',r:'Motto ōkii no wa arimasu ka?',e:'Do you have a bigger one?'},{s:'Smaller?',j:'もっと ちいさいのは ありますか？',r:'Motto chiisai no wa arimasu ka?',e:'Do you have a smaller one?'},{s:"I'll take it",j:'これを ください',r:'Kore o kudasai',e:"I'll take this one"},{s:'Gift wrap',j:'プレゼントようにしてください',r:'Purezento-yō ni shite kudasai',e:'Please gift wrap it'},{s:'Tax free?',j:'めんぜいに なりますか？',r:'Menzei ni narimasu ka?',e:'Is this tax-free?'}]},
 {id:'hotel',ic:'🏨',n:'Hotel',d:'ホテル — check-in, requests, check-out',p:[{s:'Check in',j:'チェックインを おねがいします',r:'Chekku-in o onegaishimasu',e:"I'd like to check in"},{s:'Reservation',j:'よやくした〜です',r:'Yoyaku shita ~ desu',e:'I have a reservation under ~'},{s:'WiFi',j:'ワイファイの パスワードは なんですか？',r:'WiFi no pasuwādo wa nan desu ka?',e:"What's the WiFi password?"},{s:'Towels',j:'タオルを もっと ください',r:'Taoru o motto kudasai',e:'More towels please'},{s:'Check out',j:'チェックアウトを おねがいします',r:'Chekku-auto o onegaishimasu',e:"I'd like to check out"},{s:'Hold luggage',j:'にもつを あずかってもらえますか？',r:'Nimotsu o azukatte moraemasu ka?',e:'Can you hold my luggage?'}]},
 {id:'emergency',ic:'🆘',n:'Emergencies',d:'きんきゅう — when you need help fast',p:[{s:'Help!',j:'たすけてください！',r:'Tasukete kudasai!',e:'Please help me!'},{s:'Police',j:'けいさつを よんでください',r:'Keisatsu o yonde kudasai',e:'Please call the police'},{s:'Ambulance',j:'きゅうきゅうしゃを よんでください',r:'Kyūkyūsha o yonde kudasai',e:'Please call an ambulance'},{s:'Hospital',j:'びょういんに いきたいです',r:'Byōin ni ikitai desu',e:'I want to go to the hospital'},{s:'Feel sick',j:'きぶんが わるいです',r:'Kibun ga warui desu',e:'I feel sick'},{s:'Fever',j:'ねつが あります',r:'Netsu ga arimasu',e:'I have a fever'},{s:'Stomach',j:'おなかが いたいです',r:'Onaka ga itai desu',e:'My stomach hurts'},{s:"I'm lost",j:'まいごに なりました',r:'Maigo ni narimashita',e:"I'm lost"},{s:'Lost wallet',j:'さいふを なくしました',r:'Saifu o nakushimashita',e:'I lost my wallet'},{s:'Lost passport',j:'パスポートを なくしました',r:'Pasupōto o nakushimashita',e:'I lost my passport'},{s:'English?',j:'えいごが はなせる ひとは いますか？',r:'Eigo ga hanaseru hito wa imasu ka?',e:'Is there someone who speaks English?'}]},
 {id:'temple',ic:'⛩️',n:'Temples & Culture',d:'じんじゃ — shrines, etiquette, sightseeing',p:[{s:'Where is shrine?',j:'〜じんじゃは どこですか？',r:'~Jinja wa doko desu ka?',e:'Where is ~ shrine?'},{s:'Photos OK?',j:'しゃしんを とっても いいですか？',r:'Shashin o totte mo ii desu ka?',e:'May I take a photo?'},{s:'Admission',j:'にゅうじょうりょうは いくらですか？',r:'Nyūjōryō wa ikura desu ka?',e:'How much is admission?'},{s:'Hours',j:'なんじまで あいていますか？',r:'Nanji made aite imasu ka?',e:'Until what time are you open?'},{s:'Souvenirs',j:'おみやげを さがしています',r:'Omiyage o sagashite imasu',e:"I'm looking for souvenirs"}]}
 ];
 
-
-// ── EXTRA VOCAB & GRAMMAR DRILLS ─────────────────────
 const EXTRA_VOCAB={
-  1:[
-    {j:'アメリカ',r:'Amerika',e:'America'},
-    {j:'イギリス',r:'Igirisu',e:'Britain'},
-    {j:'オーストラリア',r:'Ōsutoraria',e:'Australia'},
-    {j:'かんこく',r:'Kankoku',e:'Korea'},
-    {j:'せんこう',r:'senkō',e:'major'},
-    {j:'りゅうがくせい',r:'ryūgakusei',e:'international student'},
-    {j:'ねんせい',r:'nensei',e:'year student'},
-    {j:'でんわばんごう',r:'denwa bangō',e:'telephone number'}
-  ],
-  2:[
-    {j:'この',r:'kono',e:'this ~'},
-    {j:'その',r:'sono',e:'that ~'},
-    {j:'あの',r:'ano',e:'that ~ over there'},
-    {j:'どの',r:'dono',e:'which ~'},
-    {j:'みず',r:'mizu',e:'water'},
-    {j:'おちゃ',r:'ocha',e:'tea'},
-    {j:'さかな',r:'sakana',e:'fish'},
-    {j:'にく',r:'niku',e:'meat'},
-    {j:'メニュー',r:'menyū',e:'menu'}
-  ],
-  3:[
-    {j:'パン',r:'pan',e:'bread'},
-    {j:'こうちゃ',r:'kōcha',e:'black tea'},
-    {j:'ざっし',r:'zasshi',e:'magazine'},
-    {j:'レポート',r:'repōto',e:'report'},
-    {j:'しゅくだい',r:'shukudai',e:'homework'},
-    {j:'かく',r:'kaku',e:'to write'},
-    {j:'かう',r:'kau',e:'to buy'},
-    {j:'うち',r:'uchi',e:'home'}
-  ]
+  1:[{j:'アメリカ',r:'Amerika',e:'America'},{j:'イギリス',r:'Igirisu',e:'Britain'},{j:'オーストラリア',r:'Ōsutoraria',e:'Australia'},{j:'かんこく',r:'Kankoku',e:'Korea'},{j:'せんこう',r:'senkō',e:'major'},{j:'りゅうがくせい',r:'ryūgakusei',e:'international student'},{j:'ねんせい',r:'nensei',e:'year student'},{j:'でんわばんごう',r:'denwa bangō',e:'telephone number'}],
+  2:[{j:'この',r:'kono',e:'this ~'},{j:'その',r:'sono',e:'that ~'},{j:'あの',r:'ano',e:'that ~ over there'},{j:'どの',r:'dono',e:'which ~'},{j:'みず',r:'mizu',e:'water'},{j:'おちゃ',r:'ocha',e:'tea'},{j:'さかな',r:'sakana',e:'fish'},{j:'にく',r:'niku',e:'meat'},{j:'メニュー',r:'menyū',e:'menu'}],
+  3:[{j:'パン',r:'pan',e:'bread'},{j:'こうちゃ',r:'kōcha',e:'black tea'},{j:'ざっし',r:'zasshi',e:'magazine'},{j:'レポート',r:'repōto',e:'report'},{j:'しゅくだい',r:'shukudai',e:'homework'},{j:'かく',r:'kaku',e:'to write'},{j:'かう',r:'kau',e:'to buy'},{j:'うち',r:'uchi',e:'home'}]
 };
 
-// Map each exercise to a grammar point card
-LD[1].e[0].gp=0; LD[1].e[1].gp=0; LD[1].e[2].gp=0; LD[1].e[3].gp=1;
-LD[2].e[0].gp=0; LD[2].e[1].gp=1; LD[2].e[2].gp=3; LD[2].e[3].gp=2;
-LD[3].e[0].gp=1; LD[3].e[1].gp=1; LD[3].e[2].gp=0; LD[3].e[3].gp=2;
+function speak(t){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=0.85;speechSynthesis.speak(u);}
 
-function speak(t){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=0.85;speechSynthesis.speak(u);}  
 function activateLessonTab(tab){
   const te=document.getElementById('ltabs');
   te.querySelectorAll('.ltab').forEach(x=>x.classList.remove('on'));
@@ -721,7 +817,6 @@ function practiceGrammarPoint(n,idx){
   activateLessonTab('exercises');
 }
 
-// ── STATE ─────────────────────────────────────────────
 const S={
   kType:'h',kLrn:{h:new Set(),k:new Set()},kStr:0,
   kQ:[],kI:0,kFl:false,
@@ -731,14 +826,12 @@ const S={
   spRec:{},spOn:{}
 };
 
-// ── NAVIGATION ────────────────────────────────────────
 function goTo(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
 
-// ── HOME ──────────────────────────────────────────────
 function buildHome(){
   const g=document.getElementById('lgrid');
   g.innerHTML='';
@@ -759,7 +852,6 @@ function updProg(){
   document.getElementById('pgpct').textContent=pct+'%';
 }
 
-// ── LESSON ────────────────────────────────────────────
 function openLesson(n){
   if(!S.eI[n]) S.eI[n]=0;
   if(!S.eScore[n]) S.eScore[n]={c:0,t:0};
@@ -792,32 +884,22 @@ function renderTab(n,tab){
   else if(tab==='speak') renderSp(n,data,el);
 }
 
-// Grammar
 function renderG(n,data,el){
-  if(data){
-    data.g.forEach((g,idx)=>{
-      const d=document.createElement('div');
-      d.className='gp';
-      d.style.borderLeftColor=g.c;
-      d.innerHTML=`<div class="gp-n" style="color:${g.c}">${g.n}</div><div class="gp-m">${g.m}</div><div class="gp-exs">${g.ex.map(e=>`<div class="gp-ex">${e}</div>`).join('')}</div><div class="gp-act">Tap to practise this grammar point →</div>`;
-      d.onclick=()=>practiceGrammarPoint(n,idx);
-      el.appendChild(d);
-    });
-  } else {
-    const ref=LR[n];
-    const card=document.createElement('div');
-    card.className='gref';
-    card.innerHTML=`<div class="gref-hd">Lesson ${n} Grammar Points</div><div style="padding:.25rem 0">${ref.g.map(g=>`<div class="gref-row"><strong>${g.split(' ')[0]}</strong> ${g.split(' ').slice(1).join(' ')}</div>`).join('')}</div>`;
-    el.appendChild(card);
-  }
+  data.g.forEach((g,idx)=>{
+    const d=document.createElement('div');
+    d.className='gp';
+    d.style.borderLeftColor=g.c;
+    d.innerHTML=`<div class="gp-n" style="color:${g.c}">${g.n}</div><div class="gp-m">${g.m}</div><div class="gp-exs">${g.ex.map(e=>`<div class="gp-ex">${e}</div>`).join('')}</div><div class="gp-act">Tap to practise this grammar point →</div>`;
+    d.onclick=()=>practiceGrammarPoint(n,idx);
+    el.appendChild(d);
+  });
 }
 
-// Vocab
 function renderV(n,data,el){
-  const coreVocab=data?(data.v||[]):(LR[n]?.v||[]);
+  const coreVocab=data.v||[];
   const extraVocab=EXTRA_VOCAB[n]||[];
-  const vocab=[...coreVocab,...extraVocab];
   S.vFl[n]=false;
+  const vocab=[...coreVocab,...extraVocab];
   const w=vocab[S.vI[n]%vocab.length];
   const fc=document.createElement('div');
   fc.innerHTML=`<div class="vfc" onclick="flipVC(${n})" id="vfc${n}"><div class="vfc-main" id="vfcj${n}">${w.j}</div><div class="vfc-rom" id="vfcr${n}">${w.r}</div><div class="vfc-en" id="vfce${n}">${w.e}</div><button class="spk" onclick="event.stopPropagation();speak(document.getElementById('vfcj'+${n}).textContent)" title="Listen">🔊</button><div class="vfc-hint">tap to reveal</div></div><div class="fcc"><button class="fcb again" onclick="nextVC(${n},false)">Again</button><button class="fcb flip" onclick="flipVC(${n})">Reveal</button><button class="fcb good" onclick="nextVC(${n},true)">Got it ✓</button></div>`;
@@ -846,6 +928,7 @@ function renderV(n,data,el){
   }
   el.appendChild(list);
 }
+
 function flipVC(n){
   if(S.vFl[n])return;S.vFl[n]=true;
   document.getElementById('vfcr'+n).style.display='block';
@@ -853,9 +936,10 @@ function flipVC(n){
   const h=document.querySelector('#vfc'+n+' .vfc-hint');
   if(h)h.textContent='';
 }
+
 function nextVC(n,ok){
   const data=LD[n];
-  const vocab=data?[...(data.v||[]),...(EXTRA_VOCAB[n]||[])]:(LR[n]?.v||[]);
+  const vocab=[...(data.v||[]),...(EXTRA_VOCAB[n]||[])];
   S.vI[n]=((S.vI[n]||0)+1)%vocab.length;S.vFl[n]=false;
   const w=vocab[S.vI[n]];
   document.getElementById('vfcj'+n).textContent=w.j;
@@ -867,17 +951,16 @@ function nextVC(n,ok){
   if(h)h.textContent='tap to reveal';
 }
 
-// Exercises
 function renderE(n,data,el){
   if(!S.eScore[n])S.eScore[n]={c:0,t:0};
   const sc=S.eScore[n];
   const sr=document.createElement('div');sr.className='ex-sr';
   sr.innerHTML=`<div class="est"><div class="est-n" id="ec${n}">${sc.c}</div><div class="est-l">Correct</div></div><div class="est"><div class="est-n" id="et${n}">${sc.t}</div><div class="est-l">Answered</div></div>`;
   el.appendChild(sr);
-  const allExs=data?data.e:(LR[n]?.e||[]);
+  const allExs=data.e||[];
   const filterIdx=(S.eFilter[n]??null);
-  const exs=(filterIdx!==null && data)?allExs.filter(x=>x.gp===filterIdx):allExs;
-  if(filterIdx!==null && data && data.g[filterIdx]){
+  const exs=(filterIdx!==null)?allExs.filter(x=>x.gp===filterIdx):allExs;
+  if(filterIdx!==null && data.g[filterIdx]){
     const f=document.createElement('div');
     f.className='ex-filter';
     f.innerHTML=`<div>Practising: <strong>${data.g[filterIdx].n}</strong></div><button class="ex-clear" type="button">Show all</button>`;
@@ -891,6 +974,7 @@ function renderE(n,data,el){
   nb.onclick=()=>{S.eI[n]=(S.eI[n]+1)%exs.length;renderTab(n,'exercises');};
   el.appendChild(nb);
 }
+
 function renderQ(n,q,el){
   const card=document.createElement('div');card.className='excard';
   const tmap={mc:'fill',write:'write',finish:'finish'};
@@ -936,9 +1020,8 @@ function renderQ(n,q,el){
   el.appendChild(card);
 }
 
-// Speaking
 function renderSp(n,data,el){
-  const phrases=data?data.p:(LR[n]?.p||[]);
+  const phrases=data.p||[];
   if(!phrases.length){el.innerHTML='<div style="padding:1rem;color:var(--i40)">Phrases coming soon!</div>';return;}
   const p0=phrases[0];
   const box=document.createElement('div');box.className='spbox';
@@ -965,6 +1048,7 @@ function renderSp(n,data,el){
   });
   el.appendChild(list);
 }
+
 function toggleSpeak(n){
   if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){document.getElementById('mst'+n).textContent='Try Chrome';return;}
   if(S.spOn[n]){S.spRec[n]&&S.spRec[n].stop();return;}
@@ -983,7 +1067,6 @@ function toggleSpeak(n){
   r.start();
 }
 
-// ── KANA ──────────────────────────────────────────────
 function goKana(type){
   S.kType=type;
   document.getElementById('kana-title').textContent=type==='h'?'Hiragana':'Katakana';
@@ -991,6 +1074,7 @@ function goKana(type){
   document.getElementById('kts-k').classList.toggle('on',type==='k');
   showKG();buildKGrid();goTo('kana');
 }
+
 function buildKGrid(){
   const data=S.kType==='h'?HIRA:KATA;
   const lrn=S.kLrn[S.kType];
@@ -1005,10 +1089,12 @@ function buildKGrid(){
   });
   document.getElementById('klrn').textContent=lrn.size;
 }
+
 function showKG(){
   document.getElementById('kgv').classList.remove('hidden');
   document.getElementById('kfv').classList.add('hidden');
 }
+
 function startKFC(){
   const data=(S.kType==='h'?HIRA:KATA).filter(k=>k.k);
   S.kQ=[...data].sort(()=>Math.random()-.5);S.kI=0;S.kFl=false;
@@ -1016,6 +1102,7 @@ function startKFC(){
   document.getElementById('kfv').classList.remove('hidden');
   showKFCard();
 }
+
 function showKFCard(){
   if(S.kI>=S.kQ.length){alert('All done! 🎉');showKG();buildKGrid();return;}
   const c=S.kQ[S.kI];S.kFl=false;
@@ -1025,10 +1112,10 @@ function showKFCard(){
   document.getElementById('kfc-h').textContent='tap to reveal';
   document.getElementById('kpb').style.width=Math.round((S.kI/S.kQ.length)*100)+'%';
 }
+
 function flipKFC(){if(S.kFl)return;S.kFl=true;document.getElementById('kfc-r').style.display='block';document.getElementById('kfc-h').textContent='';speak(S.kQ[S.kI].k);}
 function markKana(ok){if(ok)S.kStr++;else S.kStr=0;document.getElementById('kstr').textContent=S.kStr;S.kI++;showKFCard();}
 
-// ── SURVIVAL ──────────────────────────────────────────
 function buildSurv(){
   const el=document.getElementById('scats');el.innerHTML='';
   SURV.forEach(cat=>{
@@ -1038,6 +1125,7 @@ function buildSurv(){
     el.appendChild(d);
   });
 }
+
 function openSurv(cat){
   S.sCat=cat;S.sSel=cat.p[0];
   document.getElementById('sph-lbl').textContent=cat.ic+' '+cat.n;
@@ -1055,6 +1143,7 @@ function openSurv(cat){
   document.getElementById('slr').innerHTML='';
   goTo('surv-ph');
 }
+
 function toggleSMic(){
   if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){alert('Try Chrome for speech recognition');return;}
   if(!S.sSel){alert('Tap a phrase first');return;}
@@ -1073,20 +1162,16 @@ function toggleSMic(){
   r.onerror=()=>{};r.start();
 }
 
-// ── INIT ──────────────────────────────────────────────
 buildHome();
 buildSurv();
 
-// ── PWA ───────────────────────────────────────────────
 let deferredPrompt = null;
 const installBtn = document.getElementById('installBtn');
-
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
   if (installBtn) installBtn.style.display = 'inline-flex';
 });
-
 if (installBtn) {
   installBtn.addEventListener('click', async () => {
     if (!deferredPrompt) return;
@@ -1096,17 +1181,14 @@ if (installBtn) {
     installBtn.style.display = 'none';
   });
 }
-
 window.addEventListener('appinstalled', () => {
   if (installBtn) installBtn.style.display = 'none';
 });
-
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(() => {});
   });
 }
-
 </script>
 </body>
 </html>
