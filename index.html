@@ -1306,10 +1306,13 @@ function renderD(n,data,el){
       speechSynthesis.speak(u);
     }
     speechSynthesis.cancel();
-    const primer=new SpeechSynthesisUtterance(' ');
-    primer.volume=0;primer.lang='ja-JP';
-    primer.onend=()=>setTimeout(playNext,100);
-    speechSynthesis.speak(primer);
+    setTimeout(()=>{
+      const primer=new SpeechSynthesisUtterance('​');
+      primer.volume=0.01;primer.lang='ja-JP';
+      primer.onend=()=>setTimeout(playNext,150);
+      primer.onerror=()=>setTimeout(playNext,150);
+      speechSynthesis.speak(primer);
+    },100);
   };
   el.appendChild(playBtn);
 
